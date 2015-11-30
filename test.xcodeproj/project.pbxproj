@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5023D8301C0A00410008A049 /* MegaCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5023D82F1C0A00410008A049 /* MegaCell2.xib */; };
-		5023D8321C0A01020008A049 /* MegaCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8311C0A01020008A049 /* MegaCell1.xib */; };
-		5023D8341C0A038F0008A049 /* MegaCell0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8331C0A038F0008A049 /* MegaCell0.xib */; };
-		5023D8361C0A47B30008A049 /* MegaCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8351C0A47B30008A049 /* MegaCell3.xib */; };
 		5023D8381C0A54B80008A049 /* bubble_greenborder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8371C0A54B80008A049 /* bubble_greenborder@3x.png */; };
 		5023D83B1C0A5BA00008A049 /* bubble_greenborder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8391C0A5BA00008A049 /* bubble_greenborder.png */; };
 		5023D83C1C0A5BA00008A049 /* bubble_greenborder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D83A1C0A5BA00008A049 /* bubble_greenborder@2x.png */; };
@@ -21,16 +17,11 @@
 		5090FC0A1C09AFDC0040E895 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5090FC091C09AFDC0040E895 /* Assets.xcassets */; };
 		5090FC0D1C09AFDC0040E895 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5090FC0B1C09AFDC0040E895 /* LaunchScreen.storyboard */; };
 		5090FC161C09B4B20040E895 /* MegaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5090FC151C09B4B20040E895 /* MegaCell.m */; };
-		5090FC181C09D60F0040E895 /* MegaCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5090FC171C09D60F0040E895 /* MegaCell4.xib */; };
 		8731E2C6350DFA9E9EFAD06E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0232B29BAB26505C572B30 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		013C5BD7DA72C5421AB6354D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		5023D82F1C0A00410008A049 /* MegaCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell2.xib; sourceTree = "<group>"; };
-		5023D8311C0A01020008A049 /* MegaCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell1.xib; sourceTree = "<group>"; };
-		5023D8331C0A038F0008A049 /* MegaCell0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell0.xib; sourceTree = "<group>"; };
-		5023D8351C0A47B30008A049 /* MegaCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell3.xib; sourceTree = "<group>"; };
 		5023D8371C0A54B80008A049 /* bubble_greenborder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@3x.png"; sourceTree = "<group>"; };
 		5023D8391C0A5BA00008A049 /* bubble_greenborder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_greenborder.png; sourceTree = "<group>"; };
 		5023D83A1C0A5BA00008A049 /* bubble_greenborder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@2x.png"; sourceTree = "<group>"; };
@@ -46,7 +37,6 @@
 		5090FC0E1C09AFDC0040E895 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5090FC141C09B4B20040E895 /* MegaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MegaCell.h; sourceTree = "<group>"; };
 		5090FC151C09B4B20040E895 /* MegaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MegaCell.m; sourceTree = "<group>"; };
-		5090FC171C09D60F0040E895 /* MegaCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell4.xib; sourceTree = "<group>"; };
 		6B0232B29BAB26505C572B30 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56FDDFDF2EAE73B56834766 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,11 +88,6 @@
 				5090FBFD1C09AFDC0040E895 /* Supporting Files */,
 				5090FC141C09B4B20040E895 /* MegaCell.h */,
 				5090FC151C09B4B20040E895 /* MegaCell.m */,
-				5023D8331C0A038F0008A049 /* MegaCell0.xib */,
-				5023D8311C0A01020008A049 /* MegaCell1.xib */,
-				5023D82F1C0A00410008A049 /* MegaCell2.xib */,
-				5023D8351C0A47B30008A049 /* MegaCell3.xib */,
-				5090FC171C09D60F0040E895 /* MegaCell4.xib */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -192,17 +177,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5023D8341C0A038F0008A049 /* MegaCell0.xib in Resources */,
 				5023D83C1C0A5BA00008A049 /* bubble_greenborder@2x.png in Resources */,
 				5023D83B1C0A5BA00008A049 /* bubble_greenborder.png in Resources */,
-				5023D8321C0A01020008A049 /* MegaCell1.xib in Resources */,
 				5090FC0D1C09AFDC0040E895 /* LaunchScreen.storyboard in Resources */,
-				5023D8361C0A47B30008A049 /* MegaCell3.xib in Resources */,
-				5023D8301C0A00410008A049 /* MegaCell2.xib in Resources */,
 				5090FC0A1C09AFDC0040E895 /* Assets.xcassets in Resources */,
 				5090FC081C09AFDC0040E895 /* Main.storyboard in Resources */,
 				5023D8381C0A54B80008A049 /* bubble_greenborder@3x.png in Resources */,
-				5090FC181C09D60F0040E895 /* MegaCell4.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

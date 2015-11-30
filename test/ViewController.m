@@ -21,11 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MegaCell0" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell0"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MegaCell1" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell1"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MegaCell2" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell2"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MegaCell3" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell3"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"MegaCell4" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell4"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
 }
@@ -36,10 +31,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRow: %i", indexPath.row);
-    NSNumber *imagesCount = @(fmodf(indexPath.row, 5));
-    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"cell%@", imagesCount]];
-//    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-    cell.row = @(indexPath.row);
+    NSUInteger imagesCount = (NSUInteger) fmodf(indexPath.row, 5);
+//    NSUInteger imagesCount = 4;
+    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"cell%u", imagesCount]];
+    if (!cell) {
+        cell = [MegaCell cellWithImagesCount:imagesCount];
+    }
 
     NSString *url = @"https://placeimg.com/480/320/people/";
     NSString *resultUrl;
@@ -50,6 +47,7 @@
         [imageView sd_setImageWithURL:[NSURL URLWithString:resultUrl]];
     }
 
+    cell.megaTextLabel.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     return cell;
 }
 
