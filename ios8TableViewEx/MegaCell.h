@@ -17,6 +17,5 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *bubbleBackgroundImageView;
 
-@property (nonatomic, strong) NSNumber *row;
 @property (nonatomic, strong) NSMutableArray *imageViews;
 @end

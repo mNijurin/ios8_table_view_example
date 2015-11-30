@@ -34,7 +34,7 @@
 		5023D8371C0A54B80008A049 /* bubble_greenborder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@3x.png"; sourceTree = "<group>"; };
 		5023D8391C0A5BA00008A049 /* bubble_greenborder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_greenborder.png; sourceTree = "<group>"; };
 		5023D83A1C0A5BA00008A049 /* bubble_greenborder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@2x.png"; sourceTree = "<group>"; };
-		5090FBFA1C09AFDC0040E895 /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5090FBFA1C09AFDC0040E895 /* ios8_UITV_Ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios8_UITV_Ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5090FBFE1C09AFDC0040E895 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5090FC001C09AFDC0040E895 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5090FC011C09AFDC0040E895 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		5090FC071C09AFDC0040E895 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5090FC091C09AFDC0040E895 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5090FC0C1C09AFDC0040E895 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5090FC0E1C09AFDC0040E895 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5090FC0E1C09AFDC0040E895 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		5090FC141C09B4B20040E895 /* MegaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MegaCell.h; sourceTree = "<group>"; };
 		5090FC151C09B4B20040E895 /* MegaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MegaCell.m; sourceTree = "<group>"; };
 		5090FC171C09D60F0040E895 /* MegaCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MegaCell4.xib; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		5090FBF11C09AFDC0040E895 = {
 			isa = PBXGroup;
 			children = (
-				5090FBFC1C09AFDC0040E895 /* test */,
+				5090FBFC1C09AFDC0040E895 /* ios8TableViewEx */,
 				5090FBFB1C09AFDC0040E895 /* Products */,
 				FACF99C2E50C760C1C62EDD8 /* Pods */,
 				75698D0FFF709B9AD5255AC8 /* Frameworks */,
@@ -76,12 +76,12 @@
 		5090FBFB1C09AFDC0040E895 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5090FBFA1C09AFDC0040E895 /* test.app */,
+				5090FBFA1C09AFDC0040E895 /* ios8_UITV_Ex.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5090FBFC1C09AFDC0040E895 /* test */ = {
+		5090FBFC1C09AFDC0040E895 /* ios8TableViewEx */ = {
 			isa = PBXGroup;
 			children = (
 				5023D8391C0A5BA00008A049 /* bubble_greenborder.png */,
@@ -104,7 +104,7 @@
 				5023D8351C0A47B30008A049 /* MegaCell3.xib */,
 				5090FC171C09D60F0040E895 /* MegaCell4.xib */,
 			);
-			path = test;
+			path = ios8TableViewEx;
 			sourceTree = "<group>";
 		};
 		5090FBFD1C09AFDC0040E895 /* Supporting Files */ = {
@@ -135,9 +135,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5090FBF91C09AFDC0040E895 /* test */ = {
+		5090FBF91C09AFDC0040E895 /* ios8TableViewEx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5090FC111C09AFDC0040E895 /* Build configuration list for PBXNativeTarget "test" */;
+			buildConfigurationList = 5090FC111C09AFDC0040E895 /* Build configuration list for PBXNativeTarget "ios8TableViewEx" */;
 			buildPhases = (
 				0A8E70E81158D66A37E8F2F6 /* Check Pods Manifest.lock */,
 				5090FBF61C09AFDC0040E895 /* Sources */,
@@ -150,9 +150,9 @@
 			);
 			dependencies = (
 			);
-			name = test;
+			name = ios8TableViewEx;
 			productName = test;
-			productReference = 5090FBFA1C09AFDC0040E895 /* test.app */;
+			productReference = 5090FBFA1C09AFDC0040E895 /* ios8_UITV_Ex.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5090FBF51C09AFDC0040E895 /* Build configuration list for PBXProject "test" */;
+			buildConfigurationList = 5090FBF51C09AFDC0040E895 /* Build configuration list for PBXProject "ios8TableViewEx" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,7 +182,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5090FBF91C09AFDC0040E895 /* test */,
+				5090FBF91C09AFDC0040E895 /* ios8TableViewEx */,
 			);
 		};
 /* End PBXProject section */
@@ -375,11 +375,11 @@
 			baseConfigurationReference = 013C5BD7DA72C5421AB6354D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = test/Info.plist;
+				INFOPLIST_FILE = ios8TableViewEx/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.test";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ios8.table-view.ex";
+				PRODUCT_NAME = ios8_UITV_Ex;
 			};
 			name = Debug;
 		};
@@ -388,18 +388,18 @@
 			baseConfigurationReference = D56FDDFDF2EAE73B56834766 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = test/Info.plist;
+				INFOPLIST_FILE = ios8TableViewEx/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.test";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ios8.table-view.ex";
+				PRODUCT_NAME = ios8_UITV_Ex;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5090FBF51C09AFDC0040E895 /* Build configuration list for PBXProject "test" */ = {
+		5090FBF51C09AFDC0040E895 /* Build configuration list for PBXProject "ios8TableViewEx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5090FC0F1C09AFDC0040E895 /* Debug */,
@@ -408,7 +408,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5090FC111C09AFDC0040E895 /* Build configuration list for PBXNativeTarget "test" */ = {
+		5090FC111C09AFDC0040E895 /* Build configuration list for PBXNativeTarget "ios8TableViewEx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5090FC121C09AFDC0040E895 /* Debug */,

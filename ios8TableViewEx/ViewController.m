@@ -39,7 +39,6 @@
     NSNumber *imagesCount = @(fmodf(indexPath.row, 5));
     MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"cell%@", imagesCount]];
 //    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-    cell.row = @(indexPath.row);
 
     NSString *url = @"https://placeimg.com/480/320/people/";
     NSString *resultUrl;
