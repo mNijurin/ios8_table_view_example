@@ -51,5 +51,35 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat estimatedHeight;
+    NSUInteger imagesCount = (NSUInteger) fmodf(indexPath.row, 5);
+    switch (imagesCount) {
+        case 0: {
+            estimatedHeight = 100;
+            break;
+        }
+        case 1: {
+            estimatedHeight = 250;
+            break;
+        }
+        case 2: {
+            estimatedHeight = 250;
+            break;
+        }
+        case 3: {
+            estimatedHeight = 400;
+            break;
+        }
+        case 4: {
+            estimatedHeight = 400;
+            break;
+        }
+        default: {
+            estimatedHeight = 100;
+        }
+    }
+    return estimatedHeight;
+}
 
 @end
