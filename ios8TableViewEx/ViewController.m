@@ -9,11 +9,13 @@
 #import <Masonry/View+MASAdditions.h>
 #import "ViewController.h"
 #import "MegaCell.h"
-#import "UIImageView+WebCache.h"
+#import "MegaItem.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *items;
 
 @end
 
@@ -22,32 +24,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.items = [NSMutableArray new];
+    for (int i = 0; i < 101; i ++) {
+        [self.items addObject:[MegaItem itemWithImagesCount:(NSUInteger) fmodf(i, 5) index:i]];
+    }
     self.tableView.estimatedRowHeight = 100;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRow: %i", indexPath.row);
-    NSUInteger imagesCount = (NSUInteger) fmodf(indexPath.row, 5);
-//    NSUInteger imagesCount = 4;
-    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"cell%u", imagesCount]];
+    MegaItem *currentItem = self.items[(NSUInteger) indexPath.row];
+    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
     if (!cell) {
-        cell = [MegaCell cellWithImagesCount:imagesCount];
+        cell = [currentItem createCell];
     }
+    [cell fillWithItem:currentItem];
 
-    NSString *url = @"https://placeimg.com/480/320/people/";
-    NSString *resultUrl;
-
-    for (int i = 0; i < cell.imageViews.count; i++) {
-        resultUrl = [NSString stringWithFormat:@"%@%@", url, @(indexPath.row * 10 + i)];
-        UIImageView *imageView = cell.imageViews[(NSUInteger) i];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:resultUrl]];
-    }
-
-    cell.megaTextLabel.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+//    cell.megaTextLabel.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
     return cell;
 }
 

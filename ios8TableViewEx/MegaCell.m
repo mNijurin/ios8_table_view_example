@@ -9,6 +9,9 @@
 #import "MegaCell.h"
 #import "EXTScope.h"
 #import "View+MASAdditions.h"
+#import "MegaItem.h"
+#import "UIImageView+WebCache.h"
+#import "NIAttributedLabel.h"
 
 @interface MegaCell ()
 @property (nonatomic, strong) UIView *customContentView;
@@ -42,6 +45,8 @@
     }
     return self;
 }
+
+#pragma mark  - ui
 
 - (void)addSubviewsWithImagesCount:(NSUInteger)imagesCount {
     [self.contentView addSubview:self.customContentView];
@@ -188,6 +193,16 @@
             make.trailing.bottom.equalTo(self.customContentView).offset(-8);
         }];
     }
+}
+
+#pragma mark - life cycle
+
+- (void)fillWithItem:(MegaItem *)item {
+    for (int i = 0; i < self.imageViews.count; i++) {
+        UIImageView *imageView = self.imageViews[(NSUInteger) i];
+        [imageView sd_setImageWithURL:item.urls[(NSUInteger) i]];
+    }
+    self.megaTextLabel.attributedText = item.attributedText;
 }
 
 #pragma mark - getters

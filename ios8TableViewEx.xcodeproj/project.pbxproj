@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12D440642D062E7FA92B4F35 /* activities_unban@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44E238ADD298B0AB7A7F5 /* activities_unban@2x.png */; };
+		12D4497C17CA07326C252942 /* activities_unlock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D448156331E6A3EB270FC6 /* activities_unlock@2x.png */; };
+		12D449AE6A480A0853E7F033 /* activities_reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44054D87F63D351489E40 /* activities_reply@2x.png */; };
+		12D44B33A131EE7A9B8D118E /* MegaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44ED68653927E8B1CAF3A /* MegaItem.m */; };
 		5023D8381C0A54B80008A049 /* bubble_greenborder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8371C0A54B80008A049 /* bubble_greenborder@3x.png */; };
 		5023D83B1C0A5BA00008A049 /* bubble_greenborder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D8391C0A5BA00008A049 /* bubble_greenborder.png */; };
 		5023D83C1C0A5BA00008A049 /* bubble_greenborder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023D83A1C0A5BA00008A049 /* bubble_greenborder@2x.png */; };
@@ -22,6 +26,11 @@
 
 /* Begin PBXFileReference section */
 		013C5BD7DA72C5421AB6354D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		12D44054D87F63D351489E40 /* activities_reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_reply@2x.png"; sourceTree = "<group>"; };
+		12D448156331E6A3EB270FC6 /* activities_unlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_unlock@2x.png"; sourceTree = "<group>"; };
+		12D44E238ADD298B0AB7A7F5 /* activities_unban@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_unban@2x.png"; sourceTree = "<group>"; };
+		12D44E4F532A5CDE142BDBCF /* MegaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MegaItem.h; sourceTree = "<group>"; };
+		12D44ED68653927E8B1CAF3A /* MegaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MegaItem.m; sourceTree = "<group>"; };
 		5023D8371C0A54B80008A049 /* bubble_greenborder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@3x.png"; sourceTree = "<group>"; };
 		5023D8391C0A5BA00008A049 /* bubble_greenborder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_greenborder.png; sourceTree = "<group>"; };
 		5023D83A1C0A5BA00008A049 /* bubble_greenborder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_greenborder@2x.png"; sourceTree = "<group>"; };
@@ -88,6 +97,11 @@
 				5090FBFD1C09AFDC0040E895 /* Supporting Files */,
 				5090FC141C09B4B20040E895 /* MegaCell.h */,
 				5090FC151C09B4B20040E895 /* MegaCell.m */,
+				12D44ED68653927E8B1CAF3A /* MegaItem.m */,
+				12D44E4F532A5CDE142BDBCF /* MegaItem.h */,
+				12D44054D87F63D351489E40 /* activities_reply@2x.png */,
+				12D44E238ADD298B0AB7A7F5 /* activities_unban@2x.png */,
+				12D448156331E6A3EB270FC6 /* activities_unlock@2x.png */,
 			);
 			path = ios8TableViewEx;
 			sourceTree = "<group>";
@@ -183,6 +197,9 @@
 				5090FC0A1C09AFDC0040E895 /* Assets.xcassets in Resources */,
 				5090FC081C09AFDC0040E895 /* Main.storyboard in Resources */,
 				5023D8381C0A54B80008A049 /* bubble_greenborder@3x.png in Resources */,
+				12D449AE6A480A0853E7F033 /* activities_reply@2x.png in Resources */,
+				12D440642D062E7FA92B4F35 /* activities_unban@2x.png in Resources */,
+				12D4497C17CA07326C252942 /* activities_unlock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +262,7 @@
 				5090FC161C09B4B20040E895 /* MegaCell.m in Sources */,
 				5090FC021C09AFDC0040E895 /* AppDelegate.m in Sources */,
 				5090FBFF1C09AFDC0040E895 /* main.m in Sources */,
+				12D44B33A131EE7A9B8D118E /* MegaItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
