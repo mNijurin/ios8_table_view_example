@@ -19,4 +19,6 @@
 + (instancetype)cellWithImagesCount:(NSUInteger)imagesCount;
 
 - (void)fillWithItem:(MegaItem *)item;
+
+- (CGFloat)heightForWidth:(CGFloat)width;
 @end

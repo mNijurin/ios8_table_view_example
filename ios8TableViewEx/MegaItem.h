@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *reuseIdentifier;
 
 @property (nonatomic, assign) NSInteger imagesCount;
-@property (nonatomic, strong) NSAttributedString *attributedText;
+@property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSArray *urls;
 
 + (instancetype)itemWithImagesCount:(int)imagesCount index:(NSInteger)index;

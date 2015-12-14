@@ -11,7 +11,6 @@
 #import "View+MASAdditions.h"
 #import "MegaItem.h"
 #import "UIImageView+WebCache.h"
-#import "NIAttributedLabel.h"
 
 @interface MegaCell ()
 @property (nonatomic, strong) UIView *customContentView;
@@ -83,6 +82,8 @@
         @strongify(self);
         make.edges.equalTo(self.customContentView);
     }];
+    [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.megaTextLabel setContentHuggingPriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
     if (imagesCount == 0) {
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -202,7 +203,13 @@
         UIImageView *imageView = self.imageViews[(NSUInteger) i];
         [imageView sd_setImageWithURL:item.urls[(NSUInteger) i]];
     }
-    self.megaTextLabel.attributedText = item.attributedText;
+    self.megaTextLabel.text = item.text;
+}
+
+- (CGFloat)heightForWidth:(CGFloat)width {
+    self.megaTextLabel.preferredMaxLayoutWidth = width - 14 - 8 - 60;
+    CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height;
 }
 
 #pragma mark - getters
