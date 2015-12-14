@@ -225,7 +225,7 @@
 - (UIImageView *)bubbleBackgroundImageView {
     if (!_bubbleBackgroundImageView) {
         _bubbleBackgroundImageView = [UIImageView new];
-        UIImage *image = [UIImage imageNamed:@"bubble_greenborder"];
+        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incomming.png"];
         UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
         _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
     }
