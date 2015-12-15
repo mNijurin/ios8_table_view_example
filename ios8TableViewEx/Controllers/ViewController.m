@@ -40,9 +40,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRow: %i", indexPath.row);
     MegaItem *currentItem = self.items[(NSUInteger) indexPath.row];
-    MegaCell *cell = (MegaCell *) [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
+    MegaCell *cell = [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
     if (!cell) {
-        cell = [currentItem createCell];
+        cell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        [cell cellDidLoad];
     }
     [cell fillWithItem:currentItem];
 
@@ -53,7 +54,8 @@
     MegaItem *currentItem = self.items[(NSUInteger) indexPath.row];
     MegaCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
     if (!currentCell) {
-        currentCell = [currentItem createCell];
+        currentCell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        [currentCell cellDidLoad];
         self.cellsForSizing[currentItem.reuseIdentifier] = currentCell;
     }
     [currentCell fillWithItem:currentItem];

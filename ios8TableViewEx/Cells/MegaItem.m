@@ -38,8 +38,8 @@
     return [NSString stringWithFormat:@"cell%u", self.imagesCount];
 }
 
-- (MegaCell *)createCell {
-    return [MegaCell cellWithImagesCount:(NSUInteger) self.imagesCount];
+- (MegaCell *)createCellWithContainerWidth:(CGFloat)containerWidth {
+    return [[MegaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.reuseIdentifier containerWidth:containerWidth imagesCount:(NSUInteger) self.imagesCount];
 }
 
 @end

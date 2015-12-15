@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseMessageCell.h"
 
 @class MegaItem;
 @class NIAttributedLabel;
 
-@interface MegaCell : UITableViewCell
-@property (nonatomic, strong) UILabel *megaTextLabel;
+@interface MegaCell : BaseMessageCell
 
-@property (nonatomic, strong) NSMutableArray *imageViews;
-
-+ (instancetype)cellWithImagesCount:(NSUInteger)imagesCount;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth imagesCount:(NSUInteger)imagesCount;
 
 - (void)fillWithItem:(MegaItem *)item;
 
-- (CGFloat)heightForWidth:(CGFloat)width;
 @end

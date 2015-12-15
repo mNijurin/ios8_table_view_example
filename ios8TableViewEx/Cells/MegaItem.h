@@ -3,7 +3,7 @@
 // Copyright (c) 2015 test. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class MegaCell;
 
@@ -18,6 +18,6 @@
 
 + (instancetype)itemWithImagesCount:(int)imagesCount index:(NSInteger)index;
 
-- (MegaCell *)createCell;
+- (MegaCell *)createCellWithContainerWidth:(CGFloat)containerWidth;
 
 @end

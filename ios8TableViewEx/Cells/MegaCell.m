@@ -13,31 +13,25 @@
 #import "UIImageView+WebCache.h"
 
 @interface MegaCell ()
-@property (nonatomic, strong) UIView *customContentView;
 
-@property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
-
+@property (nonatomic, assign) NSUInteger imagesCount;
+@property (nonatomic, strong) NSMutableArray *imageViews;
 @property (nonatomic, strong) UIImageView *firstImageView;
 @property (nonatomic, strong) UIImageView *secondImageView;
 @property (nonatomic, strong) UIImageView *thirdImageView;
 @property (nonatomic, strong) UIImageView *fourthImageView;
 
+@property (nonatomic, strong) UILabel *megaTextLabel;
+
 @end
 
 @implementation MegaCell
 
-+ (instancetype)cellWithImagesCount:(NSUInteger)imagesCount {
-    MegaCell *cell = [[MegaCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"cell%u", imagesCount]];
-    [cell addSubviewsWithImagesCount:imagesCount];
-    [cell setupConstraintsWithImagesCount:imagesCount];
-
-    return cell;
-}
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth imagesCount:(NSUInteger)imagesCount {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier containerWidth:containerWidth];
     if (self) {
         self.imageViews = [NSMutableArray new];
+        self.imagesCount = imagesCount;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
@@ -47,44 +41,40 @@
 
 #pragma mark  - ui
 
-- (void)addSubviewsWithImagesCount:(NSUInteger)imagesCount {
-    [self.contentView addSubview:self.customContentView];
-    [self.customContentView addSubview:self.bubbleBackgroundImageView];
-    if (imagesCount > 0) {
+- (void)addSubviews {
+    [super addSubviews];
+    if (self.imagesCount > 0) {
         [self.customContentView addSubview:self.firstImageView];
         [self.imageViews addObject:self.firstImageView];
     }
-    if (imagesCount > 1) {
+    if (self.imagesCount > 1) {
         [self.customContentView addSubview:self.secondImageView];
         [self.imageViews addObject:self.secondImageView];
     }
-    if (imagesCount > 2) {
+    if (self.imagesCount > 2) {
         [self.customContentView addSubview:self.thirdImageView];
         [self.imageViews addObject:self.thirdImageView];
     }
-    if (imagesCount > 3) {
+    if (self.imagesCount > 3) {
         [self.customContentView addSubview:self.fourthImageView];
         [self.imageViews addObject:self.fourthImageView];
     }
     [self.customContentView addSubview:self.megaTextLabel];
 }
 
-- (void)setupConstraintsWithImagesCount:(NSUInteger)imagesCount {
+- (void)setupConstraints {
+    [super setupConstraints];
     @weakify(self);
-    [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        @strongify(self);
-        make.leading.equalTo(self.contentView);
-        make.top.equalTo(self.contentView).offset(5);
-        make.trailing.equalTo(self.contentView).offset(-60);
-        make.bottom.equalTo(self.contentView).offset(-5);
-    }];
-    [self.bubbleBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        @strongify(self);
-        make.edges.equalTo(self.customContentView);
-    }];
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.megaTextLabel setContentHuggingPriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
-    if (imagesCount == 0) {
+    [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
+    if (self.imagesCount == 0) {
+        [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.leading.equalTo(self.contentView);
+            make.top.equalTo(self.contentView).offset(5);
+            make.bottom.equalTo(self.contentView).offset(-5);
+            make.width.lessThanOrEqualTo(self.contentView).multipliedBy(percentTakenByContent);
+        }];
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
@@ -92,29 +82,38 @@
             make.trailing.bottom.equalTo(self.customContentView).offset(-8);
         }];
     }
-    if (imagesCount == 1) {
+    if (self.imagesCount > 0) {
+        [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.leading.equalTo(self.contentView);
+            make.top.equalTo(self.contentView).offset(5);
+            make.bottom.equalTo(self.contentView).offset(-5);
+            make.width.mas_equalTo(self.containerWidth * percentTakenByContent);
+        }];
+        [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            @strongify(self);
+            make.leading.equalTo(self.customContentView).offset(14);
+            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+        }];
+    }
+    if (self.imagesCount == 1) {
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.firstImageView.mas_width).dividedBy(2);
-        }];
-        [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+            make.height.equalTo(self.firstImageView.mas_width).dividedBy(rectangleImageWHRatio);
         }];
     }
-    if (imagesCount == 2) {
+    if (self.imagesCount == 2) {
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.firstImageView.mas_width).dividedBy(1.4);
+            make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -122,28 +121,23 @@
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.secondImageView.mas_width).dividedBy(1.4);
-        }];
-        [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+            make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
     }
-    if (imagesCount == 3) {
+    if (self.imagesCount == 3) {
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
-            make.height.equalTo(self.firstImageView.mas_width).dividedBy(1.4);
+            make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
-            make.height.equalTo(self.secondImageView.mas_width).dividedBy(1.4);
+            make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
         [self.thirdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -151,28 +145,23 @@
             make.top.equalTo(self.firstImageView.mas_bottom).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.thirdImageView.mas_width).dividedBy(2.6).priority(999);//unknown behaviour - not working without priority
-        }];
-        [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+            make.height.equalTo(self.thirdImageView.mas_width).dividedBy(rectangleImageWHRatio);//.priority(999);//unknown behaviour - not working without priority
         }];
     }
-    if (imagesCount == 4) {
+    if (self.imagesCount == 4) {
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
-            make.height.equalTo(self.firstImageView.mas_width).dividedBy(1.4);
+            make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
-            make.height.equalTo(self.secondImageView.mas_width).dividedBy(1.4);
+            make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
         [self.thirdImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -188,11 +177,6 @@
             make.height.equalTo(self.secondImageView);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
         }];
-        [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
-        }];
     }
 }
 
@@ -207,30 +191,16 @@
 }
 
 - (CGFloat)heightForWidth:(CGFloat)width {
-    self.megaTextLabel.preferredMaxLayoutWidth = width - 14 - 8 - 60;
+    if (self.imagesCount == 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = width * percentTakenByContent - 14 - 8;
+    } else if (self.imagesCount > 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = self.containerWidth * percentTakenByContent - 14 - 8;
+    }
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }
 
 #pragma mark - getters
-
-- (UIView *)customContentView {
-    if (!_customContentView) {
-        _customContentView = [UIView new];
-        _customContentView.backgroundColor = [UIColor clearColor];
-    }
-    return _customContentView;
-}
-
-- (UIImageView *)bubbleBackgroundImageView {
-    if (!_bubbleBackgroundImageView) {
-        _bubbleBackgroundImageView = [UIImageView new];
-        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incomming.png"];
-        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
-        _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
-    }
-    return _bubbleBackgroundImageView;
-}
 
 - (UIImageView *)firstImageView {
     if (!_firstImageView) {
