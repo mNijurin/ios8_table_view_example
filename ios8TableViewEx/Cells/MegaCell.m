@@ -145,7 +145,7 @@
             make.top.equalTo(self.firstImageView.mas_bottom).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.thirdImageView.mas_width).dividedBy(rectangleImageWHRatio);//.priority(999);//unknown behaviour - not working without priority
+            make.height.equalTo(self.thirdImageView.mas_width).dividedBy(rectangleImageWHRatio);
         }];
     }
     if (self.imagesCount == 4) {
@@ -188,6 +188,16 @@
         [imageView sd_setImageWithURL:item.urls[(NSUInteger) i]];
     }
     self.megaTextLabel.text = item.text;
+
+    if (self.megaTextLabel.text.length == 0) {
+        [self.megaTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.offset(0);
+        }];
+    } else {
+        [self.megaTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.offset(-8);
+        }];
+    }
 }
 
 - (CGFloat)heightForWidth:(CGFloat)width {

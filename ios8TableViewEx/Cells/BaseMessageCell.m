@@ -45,6 +45,7 @@
 - (UIView *)customContentView {
     if (!_customContentView) {
         _customContentView = [UIView new];
+        _customContentView.clipsToBounds = YES;
         _customContentView.backgroundColor = [UIColor clearColor];
     }
     return _customContentView;
@@ -53,7 +54,7 @@
 - (UIImageView *)bubbleBackgroundImageView {
     if (!_bubbleBackgroundImageView) {
         _bubbleBackgroundImageView = [UIImageView new];
-        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incomming.png"];
+        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incoming.png"];
         UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
         _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
     }
