@@ -103,7 +103,7 @@
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
-            make.height.equalTo(self.firstImageView.mas_width).dividedBy(rectangleImageWHRatio);
+            make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
     }
     if (self.imagesCount == 2) {
