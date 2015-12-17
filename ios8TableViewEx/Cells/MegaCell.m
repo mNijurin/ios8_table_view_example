@@ -6,11 +6,14 @@
 //  Copyright © 2015 test. All rights reserved.
 //
 
+#import <Mantle/MTLModel.h>
 #import "MegaCell.h"
 #import "EXTScope.h"
 #import "View+MASAdditions.h"
 #import "MegaItem.h"
 #import "UIImageView+WebCache.h"
+#import "KOChatEntryElement.h"
+#import "SPLMMessage.h"
 
 @interface MegaCell ()
 
@@ -183,11 +186,21 @@
 #pragma mark - life cycle
 
 - (void)fillWithItem:(MegaItem *)item {
-    for (int i = 0; i < self.imageViews.count; i++) {
-        UIImageView *imageView = self.imageViews[(NSUInteger) i];
-        [imageView sd_setImageWithURL:item.urls[(NSUInteger) i]];
+    int indexOfCurrentImageView = 0;
+    self.megaTextLabel.text = @"";
+    for (KOChatEntryElement *element in item.message.contentArray) {
+        if (element.type == koChatEntryTypePhoto || element.type == koChatEntryTypeVideo) {
+            UIImageView *imageView = self.imageViews[(NSUInteger) indexOfCurrentImageView];
+            [imageView sd_setImageWithURL:element.thumbnailURL];
+            indexOfCurrentImageView ++;
+        } else if (element.type == koChatEntryTypeText) {
+            if ([self.megaTextLabel.text isEqualToString:@""]) {
+                self.megaTextLabel.text = element.text;
+            } else {
+                self.megaTextLabel.text = [NSString stringWithFormat:@"%@\n%@", self.megaTextLabel.text, element.text];
+            }
+        }
     }
-    self.megaTextLabel.text = item.text;
 
     if (self.megaTextLabel.text.length == 0) {
         [self.megaTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {

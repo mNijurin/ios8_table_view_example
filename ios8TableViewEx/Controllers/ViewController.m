@@ -10,6 +10,8 @@
 #import "ViewController.h"
 #import "MegaCell.h"
 #import "MegaItem.h"
+#import "MessagesProvider.h"
+#import "MessageItemsConverter.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,11 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cellsForSizing = [NSMutableDictionary new];
-    self.items = [NSMutableArray new];
-    for (int i = 0; i < 101; i ++) {
-        [self.items addObject:[MegaItem itemWithImagesCount:(NSUInteger) fmodf(i, 5) index:i]];
-//        [self.items addObject:[MegaItem itemWithImagesCount:4 index:i]];
-    }
+    NSMutableArray *array = [[[MessagesProvider new] getMessages] mutableCopy];
+    self.items = [[MessageItemsConverter new] convertMessages:array];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

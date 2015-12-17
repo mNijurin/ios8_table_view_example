@@ -6,17 +6,16 @@
 #import <UIKit/UIKit.h>
 
 @class MegaCell;
-
+@class SPLMMessage;
 
 @interface MegaItem : NSObject
 
 @property (nonatomic, strong) NSString *reuseIdentifier;
 
 @property (nonatomic, assign) NSInteger imagesCount;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSArray *urls;
+@property (nonatomic, strong) SPLMMessage *message;
 
-+ (instancetype)itemWithImagesCount:(int)imagesCount index:(NSInteger)index;
+//+ (instancetype)itemWithImagesCount:(int)imagesCount index:(NSInteger)index;
 
 - (MegaCell *)createCellWithContainerWidth:(CGFloat)containerWidth;
 
