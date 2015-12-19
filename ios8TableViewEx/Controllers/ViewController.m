@@ -8,8 +8,8 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "ViewController.h"
-#import "MegaCell.h"
-#import "MegaItem.h"
+#import "ContentMessageCell.h"
+#import "ContentMessageItem.h"
 #import "MessagesProvider.h"
 #import "MessageItemsConverter.h"
 
@@ -37,9 +37,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cellForRow: %i", indexPath.row);
-    MegaItem *currentItem = self.items[(NSUInteger) indexPath.row];
-    MegaCell *cell = [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
+    BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
+    BaseMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
     if (!cell) {
         cell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         [cell cellDidLoad];
@@ -50,8 +49,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MegaItem *currentItem = self.items[(NSUInteger) indexPath.row];
-    MegaCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
+    BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
+    BaseMessageCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
     if (!currentCell) {
         currentCell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         [currentCell cellDidLoad];

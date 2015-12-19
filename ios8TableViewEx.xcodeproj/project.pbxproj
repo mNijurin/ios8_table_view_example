@@ -11,26 +11,32 @@
 		12D44135ABA14A6FD2A2A1A5 /* MessageItemsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4443F445FC0E865AFAF0A /* MessageItemsConverter.m */; };
 		12D441E610E1B83E5A1E3F5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D44EBC85FC15DBC34C87A1 /* Assets.xcassets */; };
 		12D4430CE4F81C94DA53178F /* BaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44A22872532F7EB1F4EFC /* BaseMessageCell.m */; };
-		12D4446D0F1A87A71327BD77 /* MegaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44744B054972386AF0BEB /* MegaCell.m */; };
+		12D4446D0F1A87A71327BD77 /* ContentMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44744B054972386AF0BEB /* ContentMessageCell.m */; };
+		12D44554A0288E5E6043E81C /* EventMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44245E43C04C004E4D0B0 /* EventMessageCell.m */; };
 		12D445F06BE463B6391E9A0C /* activities_reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D442A96E85D07E5AC75440 /* activities_reply@2x.png */; };
 		12D446B05DB9499131C0F816 /* SPLMDateTimeFormatterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D443CF1DFA02B071CB1C42 /* SPLMDateTimeFormatterHelper.m */; };
+		12D446D4EF80A789A6092D56 /* EventMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44DFE8186A6179BB00822 /* EventMessageItem.m */; };
 		12D446FB9721EB2DEF205914 /* GRVUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44A8708A51A14EB4C4A37 /* GRVUserModel.m */; };
 		12D4494248FCF26E9AD59232 /* bubble_hooked_incoming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44E46223EA05A902E5124 /* bubble_hooked_incoming@2x.png */; };
-		12D4497783D32AD11BBFF4D1 /* MegaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4475AEEA3A81843D97BCB /* MegaItem.m */; };
+		12D4497783D32AD11BBFF4D1 /* ContentMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4475AEEA3A81843D97BCB /* ContentMessageItem.m */; };
 		12D44A51DC3FF08FB423B1EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D447C766322B136235134E /* ViewController.m */; };
 		12D44A56753CE9B8C02EB7ED /* bubble_hooked_incoming@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D4476C1E2B83B92EE5C535 /* bubble_hooked_incoming@3x.png */; };
 		12D44A9FBEA3BE09D7FDFC98 /* GRVObjectBuildManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44D42AFEF9F88F4B324C2 /* GRVObjectBuildManager.m */; };
 		12D44AC60C21D2158B8C0CD2 /* activities_unban@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D4429C8EE1454D8730F38E /* activities_unban@2x.png */; };
 		12D44AC6E3B3631D4601ED7F /* MessagesProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44E2808A2C887B4027C65 /* MessagesProvider.m */; };
 		12D44B39D0C0954824073A61 /* KOChatEntryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D449CEF174B3E309A978E4 /* KOChatEntryElement.m */; };
+		12D44C092327C411F9BB0777 /* BaseMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D447A3EEB6CF89AC7BB910 /* BaseMessageItem.m */; };
 		12D44C09CD34823FA2883384 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44A239DA3EBFAEE0C8E0E /* NSDate-Utilities.m */; };
 		12D44C2011BEAE53479EB609 /* NSString+Grouvi.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44C31241CAAEE5C1E4354 /* NSString+Grouvi.m */; };
 		12D44C23C568E02303624CA0 /* GRVEventMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44E581870AE5B8A1AC571 /* GRVEventMessageModel.m */; };
 		12D44C4A589B1E6E02CF74FB /* GRVBanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D448134F710F807E95F17F /* GRVBanModel.m */; };
 		12D44C78507F77684FA52CE6 /* SPLMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4410F978525E50ABC3E55 /* SPLMMessageHelper.m */; };
 		12D44CB277320A5E6A322ED0 /* bubble_hooked_incoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D445F0C345194FC1B7DDF9 /* bubble_hooked_incoming.png */; };
+		12D44CC9F0723DDDD31594D0 /* event_message_bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44E285702EF7165274FF9 /* event_message_bubble@2x.png */; };
+		12D44DA62A70CCB989079BAF /* event_message_bubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44EA8E28773CAEDF6537A /* event_message_bubble@3x.png */; };
 		12D44E05D31D22A75EA1EAF6 /* GRVNotificationMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4426F7C7D24AD9DC8DEE4 /* GRVNotificationMessageModel.m */; };
 		12D44E72A77C74418BCA9265 /* SPLMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44E4A2E25FBC15F3D2B5A /* SPLMMessage.m */; };
+		12D44FE610248564FE64A9E6 /* event_message_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D44F7BE01D9A44DAAF9B9E /* event_message_bubble.png */; };
 		5090FBFF1C09AFDC0040E895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5090FBFE1C09AFDC0040E895 /* main.m */; };
 		5090FC021C09AFDC0040E895 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5090FC011C09AFDC0040E895 /* AppDelegate.m */; };
 		5090FC081C09AFDC0040E895 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5090FC061C09AFDC0040E895 /* Main.storyboard */; };
@@ -44,9 +50,11 @@
 		12D440C74587FF3F5C093936 /* activities_unlock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_unlock@2x.png"; sourceTree = "<group>"; };
 		12D440F2216E30179B24B615 /* SPLMDateTimeFormatterHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLMDateTimeFormatterHelper.h; sourceTree = "<group>"; };
 		12D4410F978525E50ABC3E55 /* SPLMMessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLMMessageHelper.m; sourceTree = "<group>"; };
+		12D44245E43C04C004E4D0B0 /* EventMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMessageCell.m; sourceTree = "<group>"; };
 		12D4426F7C7D24AD9DC8DEE4 /* GRVNotificationMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVNotificationMessageModel.m; sourceTree = "<group>"; };
 		12D4429C8EE1454D8730F38E /* activities_unban@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_unban@2x.png"; sourceTree = "<group>"; };
 		12D442A96E85D07E5AC75440 /* activities_reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activities_reply@2x.png"; sourceTree = "<group>"; };
+		12D442B715EA651D2F8CC255 /* EventMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMessageCell.h; sourceTree = "<group>"; };
 		12D443955071724C98985F73 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		12D443CF1DFA02B071CB1C42 /* SPLMDateTimeFormatterHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLMDateTimeFormatterHelper.m; sourceTree = "<group>"; };
 		12D4443F445FC0E865AFAF0A /* MessageItemsConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageItemsConverter.m; sourceTree = "<group>"; };
@@ -55,20 +63,22 @@
 		12D4457AE386571785DDE5D1 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
 		12D445F0C345194FC1B7DDF9 /* bubble_hooked_incoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_hooked_incoming.png; sourceTree = "<group>"; };
 		12D4463CE63EFB625234BE76 /* GRVBanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVBanModel.h; sourceTree = "<group>"; };
-		12D44744B054972386AF0BEB /* MegaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MegaCell.m; sourceTree = "<group>"; };
-		12D4475AEEA3A81843D97BCB /* MegaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MegaItem.m; sourceTree = "<group>"; };
+		12D44744B054972386AF0BEB /* ContentMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentMessageCell.m; sourceTree = "<group>"; };
+		12D4475AEEA3A81843D97BCB /* ContentMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentMessageItem.m; sourceTree = "<group>"; };
 		12D4476C1E2B83B92EE5C535 /* bubble_hooked_incoming@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_hooked_incoming@3x.png"; sourceTree = "<group>"; };
+		12D447A3EEB6CF89AC7BB910 /* BaseMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMessageItem.m; sourceTree = "<group>"; };
 		12D447C766322B136235134E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		12D448134F710F807E95F17F /* GRVBanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVBanModel.m; sourceTree = "<group>"; };
-		12D448440C72CC5F0AB398CA /* MegaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MegaItem.h; sourceTree = "<group>"; };
+		12D448440C72CC5F0AB398CA /* ContentMessageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentMessageItem.h; sourceTree = "<group>"; };
 		12D4487A2C3D3FA81FDE3FB6 /* KOChatEntryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOChatEntryDelegate.h; sourceTree = "<group>"; };
 		12D448D9ACD0CD967BC672EE /* SPLMMessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLMMessageHelper.h; sourceTree = "<group>"; };
 		12D449CEF174B3E309A978E4 /* KOChatEntryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KOChatEntryElement.m; sourceTree = "<group>"; };
 		12D449D58CA808D0968A4C49 /* NSString+Grouvi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Grouvi.h"; sourceTree = "<group>"; };
 		12D44A22872532F7EB1F4EFC /* BaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMessageCell.m; sourceTree = "<group>"; };
 		12D44A239DA3EBFAEE0C8E0E /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
+		12D44A59362A5A387C7EBEFE /* EventMessageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMessageItem.h; sourceTree = "<group>"; };
 		12D44A8708A51A14EB4C4A37 /* GRVUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVUserModel.m; sourceTree = "<group>"; };
-		12D44B5B6B2B318D2CD3831B /* MegaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MegaCell.h; sourceTree = "<group>"; };
+		12D44B5B6B2B318D2CD3831B /* ContentMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentMessageCell.h; sourceTree = "<group>"; };
 		12D44BC4956D983D704069A2 /* GRVUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVUserModel.h; sourceTree = "<group>"; };
 		12D44C06E9DF177EBFCEF9C3 /* GRVObjectBuildManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVObjectBuildManager.h; sourceTree = "<group>"; };
 		12D44C31241CAAEE5C1E4354 /* NSString+Grouvi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Grouvi.m"; sourceTree = "<group>"; };
@@ -77,12 +87,17 @@
 		12D44D42AFEF9F88F4B324C2 /* GRVObjectBuildManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVObjectBuildManager.m; sourceTree = "<group>"; };
 		12D44D599DCE3A041C85BE41 /* MessageItemsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageItemsConverter.h; sourceTree = "<group>"; };
 		12D44D61AF7B4B5B52499A77 /* SPLMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLMMessage.h; sourceTree = "<group>"; };
+		12D44DFE8186A6179BB00822 /* EventMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventMessageItem.m; sourceTree = "<group>"; };
 		12D44E2808A2C887B4027C65 /* MessagesProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesProvider.m; sourceTree = "<group>"; };
+		12D44E285702EF7165274FF9 /* event_message_bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_message_bubble@2x.png"; sourceTree = "<group>"; };
 		12D44E46223EA05A902E5124 /* bubble_hooked_incoming@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_hooked_incoming@2x.png"; sourceTree = "<group>"; };
 		12D44E4A2E25FBC15F3D2B5A /* SPLMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLMMessage.m; sourceTree = "<group>"; };
 		12D44E581870AE5B8A1AC571 /* GRVEventMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVEventMessageModel.m; sourceTree = "<group>"; };
 		12D44E95DA9A014BE42EDBB8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		12D44EA8E28773CAEDF6537A /* event_message_bubble@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_message_bubble@3x.png"; sourceTree = "<group>"; };
 		12D44EBC85FC15DBC34C87A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12D44F1D3F6DBAD19E6EACD2 /* BaseMessageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMessageItem.h; sourceTree = "<group>"; };
+		12D44F7BE01D9A44DAAF9B9E /* event_message_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_message_bubble.png; sourceTree = "<group>"; };
 		5090FBFA1C09AFDC0040E895 /* ios8_UITV_Ex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios8_UITV_Ex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5090FBFE1C09AFDC0040E895 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5090FC001C09AFDC0040E895 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +181,9 @@
 				12D44E46223EA05A902E5124 /* bubble_hooked_incoming@2x.png */,
 				12D445F0C345194FC1B7DDF9 /* bubble_hooked_incoming.png */,
 				12D44EBC85FC15DBC34C87A1 /* Assets.xcassets */,
+				12D44E285702EF7165274FF9 /* event_message_bubble@2x.png */,
+				12D44EA8E28773CAEDF6537A /* event_message_bubble@3x.png */,
+				12D44F7BE01D9A44DAAF9B9E /* event_message_bubble.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -173,12 +191,18 @@
 		12D44DF163C234199E8D5125 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				12D44B5B6B2B318D2CD3831B /* MegaCell.h */,
-				12D44744B054972386AF0BEB /* MegaCell.m */,
-				12D4475AEEA3A81843D97BCB /* MegaItem.m */,
-				12D448440C72CC5F0AB398CA /* MegaItem.h */,
+				12D44B5B6B2B318D2CD3831B /* ContentMessageCell.h */,
+				12D44744B054972386AF0BEB /* ContentMessageCell.m */,
+				12D4475AEEA3A81843D97BCB /* ContentMessageItem.m */,
+				12D448440C72CC5F0AB398CA /* ContentMessageItem.h */,
 				12D44A22872532F7EB1F4EFC /* BaseMessageCell.m */,
 				12D444F4D5C13F00748C7D9B /* BaseMessageCell.h */,
+				12D44DFE8186A6179BB00822 /* EventMessageItem.m */,
+				12D44A59362A5A387C7EBEFE /* EventMessageItem.h */,
+				12D44245E43C04C004E4D0B0 /* EventMessageCell.m */,
+				12D442B715EA651D2F8CC255 /* EventMessageCell.h */,
+				12D447A3EEB6CF89AC7BB910 /* BaseMessageItem.m */,
+				12D44F1D3F6DBAD19E6EACD2 /* BaseMessageItem.h */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -312,6 +336,9 @@
 				12D4494248FCF26E9AD59232 /* bubble_hooked_incoming@2x.png in Resources */,
 				12D44CB277320A5E6A322ED0 /* bubble_hooked_incoming.png in Resources */,
 				12D441E610E1B83E5A1E3F5A /* Assets.xcassets in Resources */,
+				12D44CC9F0723DDDD31594D0 /* event_message_bubble@2x.png in Resources */,
+				12D44DA62A70CCB989079BAF /* event_message_bubble@3x.png in Resources */,
+				12D44FE610248564FE64A9E6 /* event_message_bubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,8 +399,8 @@
 			files = (
 				5090FC021C09AFDC0040E895 /* AppDelegate.m in Sources */,
 				5090FBFF1C09AFDC0040E895 /* main.m in Sources */,
-				12D4446D0F1A87A71327BD77 /* MegaCell.m in Sources */,
-				12D4497783D32AD11BBFF4D1 /* MegaItem.m in Sources */,
+				12D4446D0F1A87A71327BD77 /* ContentMessageCell.m in Sources */,
+				12D4497783D32AD11BBFF4D1 /* ContentMessageItem.m in Sources */,
 				12D44A51DC3FF08FB423B1EE /* ViewController.m in Sources */,
 				12D4430CE4F81C94DA53178F /* BaseMessageCell.m in Sources */,
 				12D44AC6E3B3631D4601ED7F /* MessagesProvider.m in Sources */,
@@ -389,6 +416,9 @@
 				12D44E05D31D22A75EA1EAF6 /* GRVNotificationMessageModel.m in Sources */,
 				12D44A9FBEA3BE09D7FDFC98 /* GRVObjectBuildManager.m in Sources */,
 				12D44135ABA14A6FD2A2A1A5 /* MessageItemsConverter.m in Sources */,
+				12D446D4EF80A789A6092D56 /* EventMessageItem.m in Sources */,
+				12D44554A0288E5E6043E81C /* EventMessageCell.m in Sources */,
+				12D44C092327C411F9BB0777 /* BaseMessageItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

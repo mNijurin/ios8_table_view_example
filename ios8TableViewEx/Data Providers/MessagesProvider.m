@@ -13,8 +13,16 @@
 
 - (NSArray *)getMessages {
     NSError *jsonError;
-    NSString *jsonMessages = [self messagesWithTwoMediasAndText];
-//    NSString *jsonMessages = [self messagesWithReplyOnTwoMediasWithText];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messagesWithEvent]];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messagesWithTwoMediasAndText]];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messagesWithReplyOnTwoMediasWithText]];
+    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@]",
+                    [self messagesWithEvent],
+                    [self messagesWithTwoMediasAndText],
+                    [self messagesWithEvent],
+                    [self messagesWithOneMedia],
+                    [self messagesWithReplyOnLongText]
+    ];
     NSData *objectData = [jsonMessages dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
@@ -23,7 +31,7 @@
 }
 
 - (NSString *)messagesWithEvent {
-    return @"[{"
+    return @"{"
             "\"id\":487575,"
             "\"serial\":1,"
             "\"uuid\":\"88605518-1afe-44c0-b5f5-ad05bf587704\","
@@ -77,11 +85,11 @@
             "},"
             "\"created_at\":\"2015-12-17T03:34:49.518Z\","
             "\"updated_at\":\"2015-12-17T03:34:49.518Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithText {
-    return @"[{"
+    return @"{"
             "\"id\":487576,"
             "\"uuid\":\"40508605-7229-4323-997f-81d479e8a7ed\","
             "\"serial\":2,"
@@ -120,11 +128,11 @@
             "\"replied_message_data\":null,"
             "\"created_at\":\"2015-12-17T03:29:03.629Z\","
             "\"updated_at\":\"2015-12-17T03:29:03.629Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithOneMedia {
-    return @"[{"
+    return @"{"
             "\"id\":487577,"
             "\"uuid\":\"822eb2f9-ff79-4cf6-99b4-942c7a95aec0\","
             "\"serial\":3,"
@@ -166,11 +174,11 @@
             "\"replied_message_data\":null,"
             "\"created_at\":\"2015-12-17T03:29:42.666Z\","
             "\"updated_at\":\"2015-12-17T03:29:42.666Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithTwoMedias {
-    return @"[{"
+    return @"{"
             "\"id\":487578,"
             "\"uuid\":\"a5ed7e83-5a1e-44f8-a086-a28f66f17b41\","
             "\"serial\":4,"
@@ -219,11 +227,11 @@
             "\"replied_message_data\":null,"
             "\"created_at\":\"2015-12-17T03:30:26.362Z\","
             "\"updated_at\":\"2015-12-17T03:30:26.362Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithTwoMediasAndText {
-    return @"[{"
+    return @"{"
             "\"id\":487588,"
             "\"uuid\":\"98c0d9d1-cd84-4d95-96c7-644398898dd8\","
             "\"serial\":9,"
@@ -276,11 +284,11 @@
             "\"replied_message_data\":null,"
             "\"created_at\":\"2015-12-17T03:37:58.284Z\","
             "\"updated_at\":\"2015-12-17T03:37:58.284Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithThreeMedias {
-    return @"[{"
+    return @"{"
             "\"id\":487579,"
             "\"uuid\":\"b3174510-87b2-4f99-81ba-cd57fd201eac\","
             "\"serial\":5,"
@@ -336,11 +344,11 @@
             "\"replied_message_data\":null,"
             "\"created_at\":\"2015-12-17T03:31:03.596Z\","
             "\"updated_at\":\"2015-12-17T03:31:03.596Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithReplyOnLongText {
-    return @"[{"
+    return @"{"
             "\"id\":487584,"
             "\"uuid\":\"a21f83d7-983b-4b67-941f-8486e8b234c9\","
             "\"serial\":7,"
@@ -418,11 +426,11 @@
             "},"
             "\"created_at\":\"2015-12-17T03:35:43.737Z\","
             "\"updated_at\":\"2015-12-17T03:35:43.737Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithReplyOnTwoMedias {
-    return @"[{"
+    return @"{"
             "\"id\":487586,"
             "\"uuid\":\"5a599bb6-258e-49b8-9302-dedb0ccc3de6\","
             "\"serial\":8,"
@@ -510,11 +518,11 @@
             "},"
             "\"created_at\":\"2015-12-17T03:36:20.557Z\","
             "\"updated_at\":\"2015-12-17T03:36:20.557Z\""
-            "}]";
+            "}";
 }
 
 - (NSString *)messagesWithReplyOnTwoMediasWithText {
-    return @"[{"
+    return @"{"
             "\"id\":487589,"
             "\"uuid\":\"454c3a72-f92a-4d28-8694-ea4c06c3250b\","
             "\"serial\":10,"
@@ -606,7 +614,7 @@
             "},"
             "\"created_at\":\"2015-12-17T03:38:42.026Z\","
             "\"updated_at\":\"2015-12-17T03:38:42.026Z\""
-            "}]";
+            "}";
 }
 
 @end

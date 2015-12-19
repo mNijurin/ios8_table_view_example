@@ -1,5 +1,5 @@
 //
-//  MegaCell.m
+//  ContentMessageCell.m
 //  test
 //
 //  Created by Maxim Nizhurin on 11/28/15.
@@ -7,15 +7,17 @@
 //
 
 #import <Mantle/MTLModel.h>
-#import "MegaCell.h"
+#import "ContentMessageCell.h"
 #import "EXTScope.h"
 #import "View+MASAdditions.h"
-#import "MegaItem.h"
+#import "ContentMessageItem.h"
 #import "UIImageView+WebCache.h"
 #import "KOChatEntryElement.h"
 #import "SPLMMessage.h"
 
-@interface MegaCell ()
+@interface ContentMessageCell ()
+
+@property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
 
 @property (nonatomic, assign) NSUInteger imagesCount;
 @property (nonatomic, strong) NSMutableArray *imageViews;
@@ -28,16 +30,13 @@
 
 @end
 
-@implementation MegaCell
+@implementation ContentMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth imagesCount:(NSUInteger)imagesCount {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier containerWidth:containerWidth];
     if (self) {
         self.imageViews = [NSMutableArray new];
         self.imagesCount = imagesCount;
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.contentView.backgroundColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -46,6 +45,7 @@
 
 - (void)addSubviews {
     [super addSubviews];
+    [self.customContentView addSubview:self.bubbleBackgroundImageView];
     if (self.imagesCount > 0) {
         [self.customContentView addSubview:self.firstImageView];
         [self.imageViews addObject:self.firstImageView];
@@ -68,6 +68,10 @@
 - (void)setupConstraints {
     [super setupConstraints];
     @weakify(self);
+    [self.bubbleBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.edges.equalTo(self.customContentView);
+    }];
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
     [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
     if (self.imagesCount == 0) {
@@ -185,7 +189,7 @@
 
 #pragma mark - life cycle
 
-- (void)fillWithItem:(MegaItem *)item {
+- (void)fillWithItem:(BaseMessageItem *)item {
     int indexOfCurrentImageView = 0;
     self.megaTextLabel.text = @"";
     for (KOChatEntryElement *element in item.message.contentArray) {
@@ -224,6 +228,16 @@
 }
 
 #pragma mark - getters
+
+- (UIImageView *)bubbleBackgroundImageView {
+    if (!_bubbleBackgroundImageView) {
+        _bubbleBackgroundImageView = [UIImageView new];
+        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incoming.png"];
+        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
+        _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
+    }
+    return _bubbleBackgroundImageView;
+}
 
 - (UIImageView *)firstImageView {
     if (!_firstImageView) {

@@ -1,5 +1,5 @@
 //
-//  MegaCell.h
+//  ContentMessageCell.h
 //  test
 //
 //  Created by Maxim Nizhurin on 11/28/15.
@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseMessageCell.h"
 
-@class MegaItem;
+@class ContentMessageItem;
 @class NIAttributedLabel;
 
-@interface MegaCell : BaseMessageCell
+@interface ContentMessageCell : BaseMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth imagesCount:(NSUInteger)imagesCount;
-
-- (void)fillWithItem:(MegaItem *)item;
 
 @end

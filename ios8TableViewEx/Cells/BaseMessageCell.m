@@ -3,9 +3,9 @@
 // Copyright (c) 2015 test. All rights reserved.
 //
 
-#import <libextobjc/EXTScope.h>
 #import <Masonry/View+MASAdditions.h>
 #import "BaseMessageCell.h"
+#import "BaseMessageItem.h"
 
 
 @implementation BaseMessageCell
@@ -13,6 +13,10 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
+
         self.containerWidth = containerWidth;
     }
     return self;
@@ -25,19 +29,18 @@
 
 - (void)addSubviews {
     [self.contentView addSubview:self.customContentView];
-    [self.customContentView addSubview:self.bubbleBackgroundImageView];
 }
 
 - (void)setupConstraints {
-    @weakify(self);
-    [self.bubbleBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        @strongify(self);
-        make.edges.equalTo(self.customContentView);
-    }];
 }
 
+- (void)fillWithItem:(BaseMessageItem *)item {
+    @throw @"fillWithItem must be overridden";
+}
+
+
 - (CGFloat)heightForWidth:(CGFloat)width {
-    @throw @"must be overriden";
+    @throw @"heightForWidth must be overridden";
 }
 
 #pragma mark - getters
@@ -49,16 +52,6 @@
         _customContentView.backgroundColor = [UIColor clearColor];
     }
     return _customContentView;
-}
-
-- (UIImageView *)bubbleBackgroundImageView {
-    if (!_bubbleBackgroundImageView) {
-        _bubbleBackgroundImageView = [UIImageView new];
-        UIImage *image = [UIImage imageNamed:@"bubble_hooked_incoming.png"];
-        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
-        _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
-    }
-    return _bubbleBackgroundImageView;
 }
 
 @end

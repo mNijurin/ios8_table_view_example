@@ -5,6 +5,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class BaseMessageItem;
+
 static const CGFloat percentTakenByContent = .8f;
 static const CGFloat squareImageWHRatio = 1;
 static const CGFloat rectangleImageWHRatio = 2;
@@ -13,7 +15,6 @@ static const CGFloat rectangleImageWHRatio = 2;
 
 @property(nonatomic) CGFloat containerWidth;
 @property (nonatomic, strong) UIView *customContentView;
-@property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth;
 
@@ -21,6 +22,8 @@ static const CGFloat rectangleImageWHRatio = 2;
 
 - (void)addSubviews;
 - (void)setupConstraints;
+
+- (void)fillWithItem:(BaseMessageItem *)item;
 
 - (CGFloat)heightForWidth:(CGFloat)width;
 
