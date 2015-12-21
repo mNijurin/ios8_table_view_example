@@ -19,18 +19,12 @@
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMedias]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMediasAndText]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithReplyOnTwoMediasWithText]];
-//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
-//                    [self messageWithLongText],
-//                    [self messageWithText],
-//                    [self messageWithLongText],
-//                    [self messageWithText],
-//                    [self messageWithLongText],
-//                    [self messageWithText],
-//                    [self messageWithLongText],
-//                    [self messageWithText],
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@]",
 //                    [self messageWithLongText],
 //                    [self messageWithLongText],
-//                    [self messageWithLongText]
+//                    [self messageWithLongText],
+//                    [self messageWithLongText],
+//                    [self messageWithOneMedia]
 //    ];
     NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
                     [self messageWithCreateEvent],

@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BaseMessageCell.h"
 
-static const CGFloat percentTakenByContent = .8f;
+static const CGFloat percentTakenByContent = .93f;
 static const CGFloat squareImageWHRatio = 1;
 static const CGFloat rectangleImageWHRatio = 2;
 static const int bottomBarReducedHeight = 8;
 static const int bottomBarExpandedHeight = 19;
+static const int textLabelLeftMargin = 56;
+static const int textLabelRightMargin = 8;
 
 @class ContentMessageItem;
 @class NIAttributedLabel;

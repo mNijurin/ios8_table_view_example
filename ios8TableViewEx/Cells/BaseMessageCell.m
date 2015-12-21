@@ -17,7 +17,7 @@
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
 
-        self.containerWidth = containerWidth;
+        self.containerMinWidth = containerWidth;
     }
     return self;
 }

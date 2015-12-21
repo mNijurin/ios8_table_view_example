@@ -9,7 +9,7 @@
 
 @interface BaseMessageCell : UITableViewCell
 
-@property(nonatomic) CGFloat containerWidth;
+@property(nonatomic) CGFloat containerMinWidth;
 @property (nonatomic, strong) UIView *customContentView;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth;
