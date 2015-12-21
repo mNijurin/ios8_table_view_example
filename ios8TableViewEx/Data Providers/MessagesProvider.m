@@ -355,7 +355,7 @@
             "\"channel_id\":5538,"
             "\"user\":{"
             "\"id\":88,"
-            "\"username\":\"Maksim Nizhurin\","
+            "\"username\":\"Kerim Kaparov\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
             "\"messages_count\":496,"

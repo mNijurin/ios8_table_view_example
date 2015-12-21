@@ -20,6 +20,9 @@
 
 @property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
 
+@property (nonatomic, strong) UIView *topBar;
+@property (nonatomic, strong) UILabel *userNameLabel;
+
 @property (nonatomic, assign) NSUInteger imagesCount;
 @property (nonatomic, strong) NSMutableArray *imageViews;
 @property (nonatomic, strong) UIImageView *firstImageView;
@@ -50,6 +53,8 @@
 - (void)addSubviews {
     [super addSubviews];
     [self.customContentView addSubview:self.bubbleBackgroundImageView];
+    [self.customContentView addSubview:self.topBar];
+    [self.topBar addSubview:self.userNameLabel];
     if (self.imagesCount > 0) {
         [self.customContentView addSubview:self.firstImageView];
         [self.imageViews addObject:self.firstImageView];
@@ -78,9 +83,19 @@
         @strongify(self);
         make.edges.equalTo(self.customContentView);
     }];
+    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.leading.equalTo(self.customContentView).offset(14);
+        make.top.trailing.equalTo(self.customContentView);
+        make.height.mas_equalTo(25);
+    }];
+    [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.leading.equalTo(self.topBar).offset(4);
+        make.bottom.equalTo(self.topBar).offset(-1);
+    }];
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
     [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
-
     if (self.imagesCount == 0) {
         [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -91,8 +106,8 @@
         }];
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.leading.equalTo(self.customContentView).offset(16);
+            make.top.equalTo(self.topBar.mas_bottom);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.bottomBar.mas_top);
         }];
@@ -106,7 +121,7 @@
         }];
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.leading.equalTo(self.customContentView).offset(14);
+            make.leading.equalTo(self.customContentView).offset(16);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.bottomBar.mas_top);
         }];
@@ -115,7 +130,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.topBar.mas_bottom);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
@@ -125,7 +140,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.topBar.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
@@ -133,7 +148,7 @@
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.firstImageView);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.firstImageView);
             make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
@@ -143,14 +158,14 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.topBar.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.firstImageView);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
@@ -167,14 +182,14 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.topBar.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
         [self.secondImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.top.equalTo(self.customContentView).offset(8);
+            make.top.equalTo(self.firstImageView);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
@@ -209,6 +224,8 @@
 
 - (void)fillWithItem:(BaseMessageItem *)item {
     ContentMessageItem *currentItem = (ContentMessageItem *) item;
+
+    self.userNameLabel.text = item.message.userName;
 
     int indexOfCurrentImageView = 0;
     self.megaTextLabel.text = @"";
@@ -345,6 +362,23 @@
         _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
     }
     return _bubbleBackgroundImageView;
+}
+
+- (UIView *)topBar {
+    if (!_topBar) {
+        _topBar = [UIView new];
+        _topBar.backgroundColor = [UIColor clearColor];
+    }
+    return _topBar;
+}
+
+- (UILabel *)userNameLabel {
+    if (!_userNameLabel) {
+        _userNameLabel = [UILabel new];
+        _userNameLabel.font = [UIFont boldSystemFontOfSize:14.3];
+        _userNameLabel.textColor = [UIColor colorWithHexString:@"ff7c00"];
+    }
+    return _userNameLabel;
 }
 
 - (UIImageView *)firstImageView {
