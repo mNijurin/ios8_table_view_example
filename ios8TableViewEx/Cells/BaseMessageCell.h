@@ -7,10 +7,6 @@
 
 @class BaseMessageItem;
 
-static const CGFloat percentTakenByContent = .8f;
-static const CGFloat squareImageWHRatio = 1;
-static const CGFloat rectangleImageWHRatio = 2;
-
 @interface BaseMessageCell : UITableViewCell
 
 @property(nonatomic) CGFloat containerWidth;

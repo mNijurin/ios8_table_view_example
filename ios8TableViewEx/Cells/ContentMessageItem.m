@@ -5,11 +5,10 @@
 
 #import "ContentMessageItem.h"
 #import "ContentMessageCell.h"
-#import "SPLMMessage.h"
-
 
 @implementation ContentMessageItem
 
+//possible values: cell0, cell1, cell2, cell3, cell4
 - (NSString *)reuseIdentifier {
     return [NSString stringWithFormat:@"cell%u", self.imagesCount];
 }

@@ -151,8 +151,6 @@ typedef NS_ENUM(NSInteger, MessageType) {
 */
 - (NSURL *)avatarURL;
 
-- (NSString *)timeString;
-
 - (NSString *)dateString;
 
 - (BOOL)isSaved;

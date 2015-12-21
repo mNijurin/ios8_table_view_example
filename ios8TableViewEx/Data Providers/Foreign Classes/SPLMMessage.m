@@ -337,7 +337,7 @@
 -(NSString *)timeStringForGroupsPage {
     if (!_timeStringForGroupsPage) {
         if ([self.createdAt isToday]) {
-            _timeStringForGroupsPage = self.timeString;
+            _timeStringForGroupsPage = self.creationTimeString;
         } else if ([self.createdAt isWeekBeforeNow]) {
             _timeStringForGroupsPage = [self.createdAt dayOfWeek];
         } else {
@@ -347,11 +347,11 @@
     return _timeStringForGroupsPage;
 }
 
-- (NSString *)timeString {
-    if (!self.creationTimeString) {
-        self.creationTimeString = [[SPLMDateTimeFormatterHelper sharedHelper] timeTextForDate:self.createdAt].string;
+- (NSString *)creationTimeString {
+    if (!_creationTimeString) {
+        _creationTimeString = [[SPLMDateTimeFormatterHelper sharedHelper] timeTextForDate:self.createdAt].string;
     }
-    return self.creationTimeString;
+    return _creationTimeString;
 }
 
 - (NSString *)dateString {

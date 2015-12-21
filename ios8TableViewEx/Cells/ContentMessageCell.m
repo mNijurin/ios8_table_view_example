@@ -14,6 +14,8 @@
 #import "UIImageView+WebCache.h"
 #import "KOChatEntryElement.h"
 #import "SPLMMessage.h"
+#import "UIColor+EDHexColor.h"
+#import "AppDelegate.h"
 
 @interface ContentMessageCell ()
 
@@ -27,6 +29,9 @@
 @property (nonatomic, strong) UIImageView *fourthImageView;
 
 @property (nonatomic, strong) UILabel *megaTextLabel;
+
+@property (nonatomic, strong) UIView *bottomBar;
+@property (nonatomic, strong) UILabel *timeStampLabel;
 
 @end
 
@@ -63,6 +68,8 @@
         [self.imageViews addObject:self.fourthImageView];
     }
     [self.customContentView addSubview:self.megaTextLabel];
+    [self.customContentView addSubview:self.bottomBar];
+    [self.bottomBar addSubview:self.timeStampLabel];
 }
 
 - (void)setupConstraints {
@@ -74,6 +81,7 @@
     }];
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
     [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
+
     if (self.imagesCount == 0) {
         [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -86,10 +94,10 @@
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
             make.top.equalTo(self.customContentView).offset(8);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+            make.trailing.equalTo(self.customContentView).offset(-8);
+            make.bottom.equalTo(self.bottomBar.mas_top);
         }];
-    }
-    if (self.imagesCount > 0) {
+    } else if (self.imagesCount > 0) {
         [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.contentView);
@@ -100,7 +108,8 @@
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(14);
-            make.trailing.bottom.equalTo(self.customContentView).offset(-8);
+            make.trailing.equalTo(self.customContentView).offset(-8);
+            make.bottom.equalTo(self.bottomBar.mas_top);
         }];
     }
     if (self.imagesCount == 1) {
@@ -127,7 +136,7 @@
             @strongify(self);
             make.top.equalTo(self.customContentView).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.firstImageView);
             make.height.equalTo(self.secondImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
     }
@@ -182,21 +191,33 @@
             make.top.equalTo(self.secondImageView.mas_bottom).offset(8);
             make.leading.trailing.equalTo(self.secondImageView);
             make.height.equalTo(self.secondImageView);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.thirdImageView);
         }];
     }
+    [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.height.mas_equalTo(bottomBarReducedHeight).key(@"bottom_bar_height");
+        make.leading.trailing.bottom.equalTo(self.customContentView);
+    }];
+    [self.timeStampLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.trailing.equalTo(self.bottomBar).offset(-5);
+        make.bottom.equalTo(self.bottomBar).offset(-2);
+    }];
 }
 
 #pragma mark - life cycle
 
 - (void)fillWithItem:(BaseMessageItem *)item {
+    ContentMessageItem *currentItem = (ContentMessageItem *) item;
+
     int indexOfCurrentImageView = 0;
     self.megaTextLabel.text = @"";
-    for (KOChatEntryElement *element in item.message.contentArray) {
+    for (KOChatEntryElement *element in currentItem.message.contentArray) {
         if (element.type == koChatEntryTypePhoto || element.type == koChatEntryTypeVideo) {
             UIImageView *imageView = self.imageViews[(NSUInteger) indexOfCurrentImageView];
             [imageView sd_setImageWithURL:element.thumbnailURL];
-            indexOfCurrentImageView ++;
+            indexOfCurrentImageView++;
         } else if (element.type == koChatEntryTypeText) {
             if ([self.megaTextLabel.text isEqualToString:@""]) {
                 self.megaTextLabel.text = element.text;
@@ -205,15 +226,103 @@
             }
         }
     }
+    self.timeStampLabel.text = currentItem.message.creationTimeString;
 
-    if (self.megaTextLabel.text.length == 0) {
-        [self.megaTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.offset(0);
+    if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0 && self.megaTextLabel.text.length > 0) {
+        NSUInteger initialLength = self.megaTextLabel.text.length;
+        NSUInteger additionalLength = currentItem.message.creationTimeString.length + 3;
+        NSUInteger resultLength = initialLength + additionalLength;
+        NSString *stringWithNbspInserted = [self.megaTextLabel.text stringByPaddingToLength:resultLength withString:@"\u00a0" startingAtIndex:0];
+        NSString *stringWithJoinChar = [NSString stringWithFormat:@"%@\u200c", stringWithNbspInserted];
+        self.megaTextLabel.text = stringWithJoinChar;
+    }
+
+    self.contentView.frame = CGRectMake(0,0,10000000,10000000);
+    @weakify(self);
+    if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0 && self.megaTextLabel.text.length > 0) {
+        [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(bottomBarReducedHeight);
         }];
+        if (currentItem.imagesCount == 1) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 2) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 3) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 4) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+    } else if ((currentItem.message.likesCount != 0 || currentItem.message.spamsCount != 0) && self.megaTextLabel.text.length > 0) {
+        [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(bottomBarExpandedHeight);
+        }];
+        if (currentItem.imagesCount == 1) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 2) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 3) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
+        if (currentItem.imagesCount == 4) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            }];
+        }
     } else {
-        [self.megaTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.offset(-8);
+        [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(bottomBarExpandedHeight);
         }];
+        if (currentItem.imagesCount == 1) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top);
+            }];
+        }
+        if (currentItem.imagesCount == 2) {
+            [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(0);
+            }];
+        }
+        if (currentItem.imagesCount == 3) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top);
+            }];
+        }
+        if (currentItem.imagesCount == 4) {
+            [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @strongify(self);
+                make.bottom.equalTo(self.megaTextLabel.mas_top);
+            }];
+        }
     }
 }
 
@@ -282,9 +391,27 @@
 - (UILabel *)megaTextLabel {
     if (!_megaTextLabel) {
         _megaTextLabel = [UILabel new];
+        _megaTextLabel.font = [UIFont systemFontOfSize:17];
         _megaTextLabel.numberOfLines = 0;
     }
     return _megaTextLabel;
+}
+
+- (UIView *)bottomBar {
+    if (!_bottomBar) {
+        _bottomBar = [UIView new];
+        _bottomBar.backgroundColor = [UIColor clearColor];
+    }
+    return _bottomBar;
+}
+
+- (UILabel *)timeStampLabel {
+    if (!_timeStampLabel) {
+        _timeStampLabel = [UILabel new];
+        _timeStampLabel.textColor = [UIColor colorWithHexString:@"CCCCCC"];
+        _timeStampLabel.font = [UIFont italicSystemFontOfSize:12];
+    }
+    return _timeStampLabel;
 }
 
 @end

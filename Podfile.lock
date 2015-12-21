@@ -1,5 +1,6 @@
 PODS:
   - DateTools (1.7.0)
+  - EDHexColor (0.0.1)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -46,6 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - DateTools
+  - EDHexColor
   - libextobjc
   - Mantle (~> 2.0.5)
   - Masonry
@@ -54,6 +56,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  EDHexColor: ce087ec4fcb33a03270ec0dab858c4c28e887b68
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
