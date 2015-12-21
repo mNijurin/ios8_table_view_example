@@ -341,7 +341,7 @@
     if (!_bubbleBackgroundImageView) {
         _bubbleBackgroundImageView = [UIImageView new];
         UIImage *image = [UIImage imageNamed:@"bubble_hooked_incoming.png"];
-        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(8.0, 15.0, 15.0, 8.0);
+        UIEdgeInsets edgeInsets = UIEdgeInsetsMake(38.0, 16.0, 9.0, 9.0);
         _bubbleBackgroundImageView.image = [image resizableImageWithCapInsets:edgeInsets resizingMode:UIImageResizingModeStretch];
     }
     return _bubbleBackgroundImageView;
