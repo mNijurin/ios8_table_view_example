@@ -80,6 +80,8 @@ typedef NS_ENUM(NSInteger, MessageType) {
 @property (nonatomic, strong) NSSet *likedBy;
 @property (nonatomic, strong) NSSet *spamReportedBy;
 
+@property (nonatomic, strong) SPLMMessage *repliedMessage;
+
 #pragma mark used in app
 @property (nonatomic, strong) NSNumber *sendingStatus;
 //need to preserve on update from server

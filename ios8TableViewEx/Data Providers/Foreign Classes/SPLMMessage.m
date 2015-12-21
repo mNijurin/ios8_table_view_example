@@ -30,30 +30,31 @@
 
 + (NSDictionary *) JSONKeyPathsByPropertyKey {
     return @{
-             @"messageId": @"id",
-             @"createdAt": @"created_at",
-             @"updatedAt"   : @"updated_at",
-             @"userId": @"user",
-             @"userName": @"user",
-             @"blocked": @"is_blocked",
-             @"wasRemoved": @"is_deleted",
-             @"serialNumber": @"serial",
-             @"messageType": @"type",
-             @"groupId": @"channel_id",
-             @"uuid": @"uuid",
-             @"userAvatarThumbUrl": @"user",
-             @"text": @"data",
-             @"bookmarkedBy": @"bookmarked_by",
-             @"likedBy": @"liked_by",
-             @"spamReportedBy": @"spam_reported_by"
-             };
+            @"messageId": @"id",
+            @"createdAt": @"created_at",
+            @"updatedAt"   : @"updated_at",
+            @"userId": @"user",
+            @"userName": @"user",
+            @"blocked": @"is_blocked",
+            @"wasRemoved": @"is_deleted",
+            @"serialNumber": @"serial",
+            @"messageType": @"type",
+            @"groupId": @"channel_id",
+            @"uuid": @"uuid",
+            @"userAvatarThumbUrl": @"user",
+            @"text": @"data",
+            @"bookmarkedBy": @"bookmarked_by",
+            @"likedBy": @"liked_by",
+            @"spamReportedBy": @"spam_reported_by",
+            @"repliedMessage": @"replied_message_data"
+    };
 }
 
 + (NSDateFormatter *)dateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
+
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
+
     dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     return dateFormatter;
@@ -142,6 +143,10 @@
             } defaultValue:@(GRVMessageTypeContent) reverseDefaultValue:nil];
 }
 
++ (NSValueTransformer *)repliedMessageJSONTransformer {
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[SPLMMessage class]];
+}
+
 #pragma mark -
 #pragma mark - MTLManagedObjectSerializing
 
@@ -170,12 +175,19 @@
             @"read" : @"read",
             @"liked" : @"liked",
             @"saved" : @"saved",
-            @"spammed" : @"spammed"
+            @"spammed" : @"spammed",
+            @"repliedMessage" : @"repliedMessage"
     };
 }
 
 + (NSSet *)propertyKeysForManagedObjectUniquing {
     return [NSSet setWithObject:@"uuid"];
+}
+
++ (NSDictionary *)relationshipModelClassesByPropertyKey {
+    return @{
+            @"repliedMessage" : [SPLMMessage class]
+    };
 }
 
 #pragma mark -
@@ -380,27 +392,24 @@
     return _spamReportedBy.count;
 }
 
-- (NSArray *)contentArray{
+- (NSArray *)contentArray {
     if (!_contentArray && self.enumMessageType == GRVMessageTypeContent) {
         if (self.text) {
-
             SPLMMessageHelper *messageHelper = [SPLMMessageHelper new];
             self.contentArray = [messageHelper textElementsFromJSONString:self.text];
-            
         }
     }
     return _contentArray;
 }
 
-
 #pragma mark -
 #pragma mark - NSObject
 - (BOOL)isEqual:(SPLMMessage *)object {
-    
+
     if (![object isKindOfClass:[SPLMMessage class]]) {
         return NO;
     }
-    
+
     return [self isEqualToMessage:object];
 }
 
