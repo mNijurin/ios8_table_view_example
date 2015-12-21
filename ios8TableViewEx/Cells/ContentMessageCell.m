@@ -15,7 +15,6 @@
 #import "KOChatEntryElement.h"
 #import "SPLMMessage.h"
 #import "UIColor+EDHexColor.h"
-#import "AppDelegate.h"
 
 @interface ContentMessageCell ()
 
