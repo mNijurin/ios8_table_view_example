@@ -18,31 +18,45 @@
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithCreateEvent]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMedias]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMediasAndText]];
-    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithReplyOnTwoMediasWithText]];
-//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@]",
-//                    [self messageWithLongText],
-//                    [self messageWithLongText],
-//                    [self messageWithLongText],
-//                    [self messageWithLongText],
-//                    [self messageWithOneMedia]
-//    ];
-//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
-//                    [self messageWithCreateEvent],
-//                    [self messageWithTwoMediasAndText],
-//                    [self messageWithJoinEvent],
-//                    [self messageWithTwoMediasTextAndLike],
-//                    [self messageWithTextAndLike],
-//                    [self messageWithReplyOnTwoMediasWithText],
-//                    [self messageWithOneMedia],
-//                    [self messageWithReplyOnLongText],
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithReplyOnTwoMediasWithText]];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
 //                    [self messageWithText],
-//                    [self messageWithReplyOnTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithLongText],
-//                    [self messageWithThreeMedias],
-//                    [self messageWithFourMedias],
-//                    [self messageWithFourMediasAndText]
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText],
+//                    [self messageWithText]
 //    ];
+    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
+                    [self messageWithCreateEvent],
+                    [self messageWithTwoMediasAndText],
+                    [self messageWithJoinEvent],
+                    [self messageWithTwoMediasTextAndLike],
+                    [self messageWithTextAndLike],
+                    [self messageWithReplyOnTwoMediasWithText],
+                    [self messageWithOneMedia],
+                    [self messageWithReplyOnLongText],
+                    [self messageWithText],
+                    [self messageWithReplyOnTwoMedias],
+                    [self messageWithTwoMedias],
+                    [self messageWithLongText],
+                    [self messageWithThreeMedias],
+                    [self messageWithFourMedias],
+                    [self messageWithFourMediasAndText]
+    ];
     NSData *objectData = [jsonMessages dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers

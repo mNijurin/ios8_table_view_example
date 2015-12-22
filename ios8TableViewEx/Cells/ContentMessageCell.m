@@ -47,6 +47,8 @@
     if (self) {
         self.imageViews = [NSMutableArray new];
         self.imagesCount = imagesCount;
+        self.layer.shouldRasterize = YES;
+        self.layer.rasterizationScale = [UIScreen mainScreen].scale;
     }
     return self;
 }

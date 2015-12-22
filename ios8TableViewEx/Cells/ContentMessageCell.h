@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseMessageCell.h"
 
-static const CGFloat percentTakenByContent = .93f;
+static const CGFloat percentTakenByContent = .9f;
 static const CGFloat squareImageWHRatio = 1;
 static const CGFloat rectangleImageWHRatio = 2;
 static const int bottomBarReducedHeight = 8;
