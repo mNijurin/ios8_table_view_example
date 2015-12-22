@@ -17,6 +17,8 @@ static const int bottomBarExpandedHeight = 19;
 static const int textLabelLeftMargin = 56;
 static const int textLabelRightMargin = 8;
 
+static const int textLabelTopMargin = 5;
+static const int replyViewHeight = 39;
 @class ContentMessageItem;
 @class NIAttributedLabel;
 

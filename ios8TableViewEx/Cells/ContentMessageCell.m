@@ -15,6 +15,7 @@
 #import "KOChatEntryElement.h"
 #import "SPLMMessage.h"
 #import "UIColor+EDHexColor.h"
+#import "ReplyViewInCell.h"
 
 @interface ContentMessageCell ()
 
@@ -24,6 +25,8 @@
 
 @property (nonatomic, strong) UIView *topBar;
 @property (nonatomic, strong) UILabel *userNameLabel;
+
+@property (nonatomic, strong) ReplyViewInCell *replyView;
 
 @property (nonatomic, assign) NSUInteger imagesCount;
 @property (nonatomic, strong) NSMutableArray *imageViews;
@@ -58,8 +61,12 @@
     [super addSubviews];
     [self.customContentView addSubview:self.avatarImageView];
     [self.customContentView addSubview:self.bubbleBackgroundImageView];
+
     [self.customContentView addSubview:self.topBar];
     [self.topBar addSubview:self.userNameLabel];
+
+    [self.customContentView addSubview:self.replyView];
+
     if (self.imagesCount > 0) {
         [self.customContentView addSubview:self.firstImageView];
         [self.imageViews addObject:self.firstImageView];
@@ -96,19 +103,30 @@
         make.leading.equalTo(self.customContentView).offset(40);
         make.top.trailing.bottom.equalTo(self.customContentView);
     }];
+
     [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.leading.equalTo(self.customContentView).offset(54);
         make.top.trailing.equalTo(self.customContentView);
-        make.height.mas_equalTo(25);
+        make.height.mas_equalTo(23);
     }];
     [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.leading.equalTo(self.topBar).offset(4);
+        make.leading.equalTo(self.topBar);
         make.bottom.equalTo(self.topBar).offset(-1);
     }];
+
+    [self.replyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        @strongify(self);
+        make.leading.equalTo(self.customContentView).offset(56);
+        make.top.equalTo(self.topBar.mas_bottom).offset(3);
+        make.trailing.equalTo(self.customContentView).offset(-10);
+        make.height.mas_equalTo(replyViewHeight);
+    }];
+
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
     [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
+
     if (self.imagesCount == 0) {
         [self.customContentView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -120,7 +138,7 @@
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(textLabelLeftMargin);
-            make.top.equalTo(self.topBar.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom);
             make.trailing.equalTo(self.customContentView).offset(-textLabelRightMargin);
             make.bottom.equalTo(self.bottomBar.mas_top);
         }];
@@ -139,13 +157,14 @@
             make.bottom.equalTo(self.bottomBar.mas_top);
         }];
     }
+
     if (self.imagesCount == 1) {
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.topBar.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom);
             make.trailing.equalTo(self.customContentView).offset(-8);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
         }];
     }
@@ -153,9 +172,9 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.topBar.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
         }];
@@ -171,7 +190,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.topBar.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
@@ -187,7 +206,7 @@
             make.leading.equalTo(self.firstImageView);
             make.top.equalTo(self.firstImageView.mas_bottom).offset(8);
             make.trailing.equalTo(self.customContentView).offset(-8);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             make.height.equalTo(self.thirdImageView.mas_width).dividedBy(rectangleImageWHRatio);
         }];
     }
@@ -195,7 +214,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.topBar.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
@@ -211,7 +230,7 @@
             make.top.equalTo(self.firstImageView.mas_bottom).offset(8);
             make.leading.trailing.equalTo(self.firstImageView);
             make.height.equalTo(self.firstImageView);
-            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+            make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
         }];
         [self.fourthImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
@@ -262,6 +281,19 @@
     
     self.contentView.frame = CGRectMake(0,0,10000000,10000000);
     @weakify(self);
+    if (currentItem.message.repliedMessage) {
+        [self.replyView fillWithItem:currentItem];
+        self.replyView.hidden = NO;
+        [self.replyView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(replyViewHeight);
+        }];
+    } else {
+        self.replyView.hidden = YES;
+        [self.replyView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+    }
+    
     if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0 && self.megaTextLabel.text.length > 0) {
         [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(bottomBarReducedHeight);
@@ -269,25 +301,25 @@
         if (currentItem.imagesCount == 1) {
             [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 2) {
             [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 3) {
             [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 4) {
             [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
     } else if ((currentItem.message.likesCount != 0 || currentItem.message.spamsCount != 0) && self.megaTextLabel.text.length > 0) {
@@ -297,25 +329,25 @@
         if (currentItem.imagesCount == 1) {
             [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 2) {
             [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 3) {
             [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
         if (currentItem.imagesCount == 4) {
             [self.thirdImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-8);
+                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             }];
         }
     } else {
@@ -331,7 +363,7 @@
         if (currentItem.imagesCount == 2) {
             [self.firstImageView mas_updateConstraints:^(MASConstraintMaker *make) {
                 @strongify(self);
-                make.bottom.equalTo(self.megaTextLabel.mas_top).offset(0);
+                make.bottom.equalTo(self.megaTextLabel.mas_top);
             }];
         }
         if (currentItem.imagesCount == 3) {
@@ -393,10 +425,19 @@
 - (UILabel *)userNameLabel {
     if (!_userNameLabel) {
         _userNameLabel = [UILabel new];
-        _userNameLabel.font = [UIFont boldSystemFontOfSize:14.3];
+        _userNameLabel.font = [UIFont boldSystemFontOfSize:13.7];
         _userNameLabel.textColor = [UIColor colorWithHexString:@"ff7c00"];
     }
     return _userNameLabel;
+}
+
+- (ReplyViewInCell *)replyView {
+    if (!_replyView) {
+        _replyView = [ReplyViewInCell new];
+//        _replyView.backgroundColor = [UIColor colorWithHexString:@"00ff00" withAlpha:.4];
+        _replyView.backgroundColor = [UIColor clearColor];
+    }
+    return _replyView;
 }
 
 - (UIImageView *)firstImageView {

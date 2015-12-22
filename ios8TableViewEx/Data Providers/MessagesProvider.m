@@ -19,66 +19,18 @@
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMedias]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithTwoMediasAndText]];
 //    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithReplyOnTwoMediasWithText]];
-//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
-//                    [self messageWithTwoMedias],
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@]", [self messageWithReplyOnLongText]];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@]",
+//                    [self messageWithReplyOnLongText],
+//                    [self messageWithReplyOnTwoMediasWithText],
+//                    [self messageWithReplyOnTwoMedias],
+//                    [self messageWithReplyOnTwoMediasWithOneMedia],
+//                    [self messageWithReplyOnTwoMediasWithTwoMedias],
 //                    [self messageWithTwoMedias]
+//
 //    ];
 
-//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText],
-//                    [self messageWithText]
-//    ];
-
-    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
+    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
                     [self messageWithCreateEvent],
                     [self messageWithTwoMediasAndText],
                     [self messageWithJoinEvent],
@@ -93,8 +45,11 @@
                     [self messageWithLongText],
                     [self messageWithThreeMedias],
                     [self messageWithFourMedias],
-                    [self messageWithFourMediasAndText]
+                    [self messageWithFourMediasAndText],
+                    [self messageWithReplyOnTwoMediasWithTwoMedias],
+                    [self messageWithReplyOnTwoMediasWithOneMedia]
     ];
+
     NSData *objectData = [jsonMessages dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
@@ -713,7 +668,7 @@
             "\"channel_id\":5538,"
             "\"user\":{"
             "\"id\":131,"
-            "\"username\":\"m n\","
+            "\"username\":\"Kerim Kaparov\","
             "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
             "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
             "\"messages_count\":105,"
@@ -749,7 +704,7 @@
             "\"channel_id\":5538,"
             "\"user\":{"
             "\"id\":88,"
-            "\"username\":\"Maksim Nizhurin\","
+            "\"username\":\"Johny Bee\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
             "\"messages_count\":495,"
@@ -766,7 +721,7 @@
             "\"data\":["
             "{"
             "\"type\":\"text\","
-            "\"text\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
+            "\"text\":\"This handy tools when\""
             "}"
             "],"
             "\"bookmarked_by\":["
@@ -813,6 +768,211 @@
             "{"
             "\"type\":\"text\","
             "\"text\":\"reply on two medias\""
+            "}"
+            "],"
+            "\"bookmarked_by\":["
+            "],"
+            "\"liked_by\":["
+            "],"
+            "\"spam_reported_by\":["
+            "],"
+            "\"is_blocked\":false,"
+            "\"is_deleted\":false,"
+            "\"replied_message_data\":{"
+            "\"id\":487578,"
+            "\"uuid\":\"a5ed7e83-5a1e-44f8-a086-a28f66f17b41\","
+            "\"serial\":4,"
+            "\"type\":\"UserMessage\","
+            "\"channel_id\":5538,"
+            "\"user\":{"
+            "\"id\":88,"
+            "\"username\":\"Maksim Nizhurin\","
+            "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
+            "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
+            "\"messages_count\":495,"
+            "\"others_bookmarks_count\":8,"
+            "\"others_likes_count\":25,"
+            "\"others_spam_reports_count\":12,"
+            "\"online\":true,"
+            "\"push_notification_sound\":\"Pooh.aiff\","
+            "\"muted\":false,"
+            "\"last_disconnected_at\":\"2015-12-16T17:06:05.783Z\","
+            "\"created_at\":\"2015-04-20T06:31:53.386Z\","
+            "\"updated_at\":\"2015-12-08T17:12:30.480Z\""
+            "},"
+            "\"data\":["
+            "{"
+            "\"height\":561,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/cb59dcae-f4db-4812-aa98-fdbe30d1f0d7/10A67BDC-47CC-4051-9968-274AA6CA82DD_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/e4d35bc8-cece-4415-be48-4ee18bfcc05d/10A67BDC-47CC-4051-9968-274AA6CA82DD_thumb.jpeg\","
+            "\"width\":670"
+            "},"
+            "{"
+            "\"height\":600,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/586139cd-acf6-438b-a524-d58af5da91ec/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/45d3ac5b-520f-4aa7-a8eb-5b3752824533/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_thumb.jpeg\","
+            "\"width\":399"
+            "}"
+            "],"
+            "\"bookmarked_by\":["
+            "],"
+            "\"liked_by\":["
+            "],"
+            "\"spam_reported_by\":["
+            "],"
+            "\"is_blocked\":false,"
+            "\"is_deleted\":false,"
+            "\"replied_message_data\":null,"
+            "\"created_at\":\"2015-12-17T03:30:26.362Z\","
+            "\"updated_at\":\"2015-12-17T03:30:26.362Z\""
+            "},"
+            "\"created_at\":\"2015-12-17T03:36:20.557Z\","
+            "\"updated_at\":\"2015-12-17T03:36:20.557Z\""
+            "}";
+}
+
+- (NSString *)messageWithReplyOnTwoMediasWithOneMedia {
+    return @"{"
+            "\"id\":487586,"
+            "\"uuid\":\"5a599bb6-258e-49b8-9302-dedb0ccc3de6\","
+            "\"serial\":8,"
+            "\"type\":\"UserMessage\","
+            "\"channel_id\":5538,"
+            "\"user\":{"
+            "\"id\":131,"
+            "\"username\":\"m n\","
+            "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
+            "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
+            "\"messages_count\":105,"
+            "\"others_bookmarks_count\":0,"
+            "\"others_likes_count\":3,"
+            "\"others_spam_reports_count\":17,"
+            "\"online\":true,"
+            "\"push_notification_sound\":\"default\","
+            "\"muted\":false,"
+            "\"last_disconnected_at\":\"2015-12-16T12:10:44.585Z\","
+            "\"created_at\":\"2015-06-08T07:10:29.891Z\","
+            "\"updated_at\":\"2015-11-27T16:50:39.699Z\""
+            "},"
+            "\"data\":["
+            "{"
+            "\"type\":\"text\","
+            "\"text\":\"reply on two medias with one media\""
+            "},"
+            "{"
+            "\"height\":600,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/586139cd-acf6-438b-a524-d58af5da91ec/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/45d3ac5b-520f-4aa7-a8eb-5b3752824533/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_thumb.jpeg\","
+            "\"width\":399"
+            "}"
+            "],"
+            "\"bookmarked_by\":["
+            "],"
+            "\"liked_by\":["
+            "],"
+            "\"spam_reported_by\":["
+            "],"
+            "\"is_blocked\":false,"
+            "\"is_deleted\":false,"
+            "\"replied_message_data\":{"
+            "\"id\":487578,"
+            "\"uuid\":\"a5ed7e83-5a1e-44f8-a086-a28f66f17b41\","
+            "\"serial\":4,"
+            "\"type\":\"UserMessage\","
+            "\"channel_id\":5538,"
+            "\"user\":{"
+            "\"id\":88,"
+            "\"username\":\"Maksim Nizhurin\","
+            "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
+            "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
+            "\"messages_count\":495,"
+            "\"others_bookmarks_count\":8,"
+            "\"others_likes_count\":25,"
+            "\"others_spam_reports_count\":12,"
+            "\"online\":true,"
+            "\"push_notification_sound\":\"Pooh.aiff\","
+            "\"muted\":false,"
+            "\"last_disconnected_at\":\"2015-12-16T17:06:05.783Z\","
+            "\"created_at\":\"2015-04-20T06:31:53.386Z\","
+            "\"updated_at\":\"2015-12-08T17:12:30.480Z\""
+            "},"
+            "\"data\":["
+            "{"
+            "\"height\":561,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/cb59dcae-f4db-4812-aa98-fdbe30d1f0d7/10A67BDC-47CC-4051-9968-274AA6CA82DD_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/e4d35bc8-cece-4415-be48-4ee18bfcc05d/10A67BDC-47CC-4051-9968-274AA6CA82DD_thumb.jpeg\","
+            "\"width\":670"
+            "},"
+            "{"
+            "\"height\":600,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/586139cd-acf6-438b-a524-d58af5da91ec/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/45d3ac5b-520f-4aa7-a8eb-5b3752824533/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_thumb.jpeg\","
+            "\"width\":399"
+            "}"
+            "],"
+            "\"bookmarked_by\":["
+            "],"
+            "\"liked_by\":["
+            "],"
+            "\"spam_reported_by\":["
+            "],"
+            "\"is_blocked\":false,"
+            "\"is_deleted\":false,"
+            "\"replied_message_data\":null,"
+            "\"created_at\":\"2015-12-17T03:30:26.362Z\","
+            "\"updated_at\":\"2015-12-17T03:30:26.362Z\""
+            "},"
+            "\"created_at\":\"2015-12-17T03:36:20.557Z\","
+            "\"updated_at\":\"2015-12-17T03:36:20.557Z\""
+            "}";
+}
+
+- (NSString *)messageWithReplyOnTwoMediasWithTwoMedias {
+    return @"{"
+            "\"id\":487586,"
+            "\"uuid\":\"5a599bb6-258e-49b8-9302-dedb0ccc3de6\","
+            "\"serial\":8,"
+            "\"type\":\"UserMessage\","
+            "\"channel_id\":5538,"
+            "\"user\":{"
+            "\"id\":131,"
+            "\"username\":\"m n\","
+            "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
+            "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
+            "\"messages_count\":105,"
+            "\"others_bookmarks_count\":0,"
+            "\"others_likes_count\":3,"
+            "\"others_spam_reports_count\":17,"
+            "\"online\":true,"
+            "\"push_notification_sound\":\"default\","
+            "\"muted\":false,"
+            "\"last_disconnected_at\":\"2015-12-16T12:10:44.585Z\","
+            "\"created_at\":\"2015-06-08T07:10:29.891Z\","
+            "\"updated_at\":\"2015-11-27T16:50:39.699Z\""
+            "},"
+            "\"data\":["
+            "{"
+            "\"type\":\"text\","
+            "\"text\":\"reply on two medias with two medias\""
+            "},"
+            "{"
+            "\"height\":600,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/586139cd-acf6-438b-a524-d58af5da91ec/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/45d3ac5b-520f-4aa7-a8eb-5b3752824533/2622B6A9-E866-47F1-8EFF-644A6DACEAA8_thumb.jpeg\","
+            "\"width\":399"
+            "},"
+            "{"
+            "\"height\":600,"
+            "\"type\":\"image\","
+            "\"url\":\"http://cdn.grouvi.org/uploads/40d4d780-4d80-4ec7-a019-70e8880668bd/1EB8CEC8-25B5-4F5A-988F-67FFDB68AE1D_media.jpeg\","
+            "\"thumb_url\":\"http://cdn.grouvi.org/uploads/524739a9-6764-4e1f-ad66-a20d17b9dd7f/1EB8CEC8-25B5-4F5A-988F-67FFDB68AE1D_thumb.jpeg\","
+            "\"width\":401"
             "}"
             "],"
             "\"bookmarked_by\":["
