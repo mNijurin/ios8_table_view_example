@@ -13,4 +13,7 @@
 
 @property (nonatomic, assign) NSInteger imagesCount;
 
+@property(nonatomic, copy) NSMutableString *messageText;
+@property(nonatomic, copy) NSString *spacedMessageText;
+
 @end

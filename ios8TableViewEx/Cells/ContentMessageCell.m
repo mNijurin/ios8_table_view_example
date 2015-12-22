@@ -21,7 +21,6 @@
 @property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
 
 @property (nonatomic, strong) UIImageView *avatarImageView;
-@property (nonatomic, strong) UIView *avatarStrokeView;
 
 @property (nonatomic, strong) UIView *topBar;
 @property (nonatomic, strong) UILabel *userNameLabel;
@@ -57,7 +56,6 @@
 
 - (void)addSubviews {
     [super addSubviews];
-    [self.customContentView addSubview:self.avatarStrokeView];
     [self.customContentView addSubview:self.avatarImageView];
     [self.customContentView addSubview:self.bubbleBackgroundImageView];
     [self.customContentView addSubview:self.topBar];
@@ -88,15 +86,10 @@
     @weakify(self);
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.leading.equalTo(self.customContentView).offset(6);
-        make.top.equalTo(self.customContentView).offset(1);
-        make.width.mas_equalTo(32);
-        make.height.mas_equalTo(32);
-    }];
-    [self.avatarStrokeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        @strongify(self);
-        make.centerX.centerY.equalTo(self.avatarImageView);
-        make.width.height.equalTo(self.avatarImageView).offset(1);
+        make.leading.equalTo(self.customContentView).offset(4);
+        make.top.equalTo(self.customContentView);
+        make.width.mas_equalTo(35);
+        make.height.mas_equalTo(35);
     }];
     [self.bubbleBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
@@ -251,32 +244,22 @@
 
     self.userNameLabel.text = item.message.userName;
 
+    if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0) {
+        self.megaTextLabel.text = currentItem.spacedMessageText;
+    } else {
+        self.megaTextLabel.text = currentItem.messageText;
+    }
+    
     int indexOfCurrentImageView = 0;
-    self.megaTextLabel.text = @"";
     for (KOChatEntryElement *element in currentItem.message.contentArray) {
         if (element.type == koChatEntryTypePhoto || element.type == koChatEntryTypeVideo) {
             UIImageView *imageView = self.imageViews[(NSUInteger) indexOfCurrentImageView];
             [imageView sd_setImageWithURL:element.thumbnailURL];
             indexOfCurrentImageView++;
-        } else if (element.type == koChatEntryTypeText) {
-            if ([self.megaTextLabel.text isEqualToString:@""]) {
-                self.megaTextLabel.text = element.text;
-            } else {
-                self.megaTextLabel.text = [NSString stringWithFormat:@"%@\n%@", self.megaTextLabel.text, element.text];
-            }
         }
     }
     self.timeStampLabel.text = currentItem.message.creationTimeString;
-
-    if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0 && self.megaTextLabel.text.length > 0) {
-        NSUInteger initialLength = self.megaTextLabel.text.length;
-        NSUInteger additionalLength = currentItem.message.creationTimeString.length + 3;
-        NSUInteger resultLength = initialLength + additionalLength;
-        NSString *stringWithNbspInserted = [self.megaTextLabel.text stringByPaddingToLength:resultLength withString:@"\u00a0" startingAtIndex:0];
-        NSString *stringWithJoinChar = [NSString stringWithFormat:@"%@\u200c", stringWithNbspInserted];
-        self.megaTextLabel.text = stringWithJoinChar;
-    }
-
+    
     self.contentView.frame = CGRectMake(0,0,10000000,10000000);
     @weakify(self);
     if (currentItem.message.likesCount == 0 && currentItem.message.spamsCount == 0 && self.megaTextLabel.text.length > 0) {
@@ -387,15 +370,6 @@
         _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _avatarImageView;
-}
-
-- (UIView *)avatarStrokeView {
-    if (!_avatarStrokeView) {
-        _avatarStrokeView = [UIView new];
-        _avatarStrokeView.backgroundColor = [UIColor greenColor];
-        _avatarStrokeView.layer.cornerRadius = 17;
-    }
-    return _avatarStrokeView;
 }
 
 - (UIImageView *)bubbleBackgroundImageView {

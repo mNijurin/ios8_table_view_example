@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *items;
 
 @property (nonatomic, strong) NSMutableDictionary *cellsForSizing;
+@property (nonatomic, strong) NSMutableDictionary *heightsCache;
 
 @end
 
@@ -28,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cellsForSizing = [NSMutableDictionary new];
+    self.heightsCache = [NSMutableDictionary new];
     NSMutableArray *array = [[[MessagesProvider new] getMessages] mutableCopy];
     self.items = [[MessageItemsConverter new] convertMessages:array];
 }
@@ -37,6 +39,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"cell for row: %i", indexPath.row);
     BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
     BaseMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
     if (!cell) {
@@ -49,15 +52,29 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"height for row: %i", indexPath.row);
     BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
-    BaseMessageCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
-    if (!currentCell) {
-        currentCell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-        [currentCell cellDidLoad];
-        self.cellsForSizing[currentItem.reuseIdentifier] = currentCell;
+    if (self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]]) {
+//        NSLog(@"height from cache for row: %i", indexPath.row);
+        return [self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]] floatValue];
+    } else {
+//        NSLog(@"height calc for row: %i", indexPath.row);
+        BaseMessageCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
+        if (!currentCell) {
+            currentCell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+            [currentCell cellDidLoad];
+            self.cellsForSizing[currentItem.reuseIdentifier] = currentCell;
+        }
+        [currentCell fillWithItem:currentItem];
+        CGFloat height = [currentCell heightForWidth:[UIScreen mainScreen].bounds.size.width];
+        self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]] = @(height);
+        return height;
     }
-    [currentCell fillWithItem:currentItem];
-    return [currentCell heightForWidth:self.tableView.frame.size.width];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    self.heightsCache = [NSMutableDictionary new];
 }
 
 @end
