@@ -1,5 +1,5 @@
 //
-//  ContentMessageCell.m
+//  ContentIncomingMessageCell.m
 //  test
 //
 //  Created by Maxim Nizhurin on 11/28/15.
@@ -7,7 +7,7 @@
 //
 
 #import <Mantle/MTLModel.h>
-#import "ContentMessageCell.h"
+#import "ContentIncomingMessageCell.h"
 #import "EXTScope.h"
 #import "View+MASAdditions.h"
 #import "ContentMessageItem.h"
@@ -17,7 +17,7 @@
 #import "UIColor+EDHexColor.h"
 #import "ReplyViewInCell.h"
 
-@interface ContentMessageCell ()
+@interface ContentIncomingMessageCell ()
 
 @property (nonatomic, strong) UIImageView *bubbleBackgroundImageView;
 
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation ContentMessageCell
+@implementation ContentIncomingMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier containerWidth:(CGFloat)containerWidth imagesCount:(NSUInteger)imagesCount {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier containerWidth:containerWidth];
@@ -108,20 +108,20 @@
         @strongify(self);
         make.leading.equalTo(self.customContentView).offset(54);
         make.top.trailing.equalTo(self.customContentView);
-        make.height.mas_equalTo(23);
+        make.height.mas_equalTo(22);
     }];
     [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.leading.equalTo(self.topBar);
-        make.bottom.equalTo(self.topBar).offset(-1);
+        make.bottom.equalTo(self.topBar);
     }];
 
     [self.replyView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.leading.equalTo(self.customContentView).offset(56);
-        make.top.equalTo(self.topBar.mas_bottom).offset(3);
+        make.top.equalTo(self.topBar.mas_bottom).offset(replyViewTopMargin);
         make.trailing.equalTo(self.customContentView).offset(-10);
-        make.height.mas_equalTo(replyViewHeight);
+        make.height.mas_equalTo(replyViewExpandedHeight);
     }];
 
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
@@ -162,7 +162,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.replyView.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom).offset(topImageViewTopMargin);
             make.trailing.equalTo(self.customContentView).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
@@ -172,7 +172,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.replyView.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom).offset(topImageViewTopMargin);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.bottom.equalTo(self.megaTextLabel.mas_top).offset(-textLabelTopMargin);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
@@ -190,7 +190,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.replyView.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom).offset(topImageViewTopMargin);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
@@ -214,7 +214,7 @@
         [self.firstImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
             make.leading.equalTo(self.customContentView).offset(54);
-            make.top.equalTo(self.replyView.mas_bottom);
+            make.top.equalTo(self.replyView.mas_bottom).offset(topImageViewTopMargin);
             make.trailing.equalTo(self.secondImageView.mas_leading).offset(-8);
             make.height.equalTo(self.firstImageView.mas_width).dividedBy(squareImageWHRatio);
             make.width.equalTo(self.secondImageView);
@@ -285,12 +285,14 @@
         [self.replyView fillWithItem:currentItem];
         self.replyView.hidden = NO;
         [self.replyView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(replyViewHeight);
+            make.top.equalTo(self.topBar.mas_bottom).offset(replyViewTopMargin);
+            make.height.mas_equalTo(replyViewExpandedHeight);
         }];
     } else {
         self.replyView.hidden = YES;
         [self.replyView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(0);
+            make.top.equalTo(self.topBar.mas_bottom);
+            make.height.mas_equalTo(replyViewReducedHeight);
         }];
     }
     

@@ -8,7 +8,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "ViewController.h"
-#import "ContentMessageCell.h"
+#import "ContentIncomingMessageCell.h"
 #import "ContentMessageItem.h"
 #import "MessagesProvider.h"
 #import "MessageItemsConverter.h"

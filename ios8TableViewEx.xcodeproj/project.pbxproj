@@ -12,7 +12,7 @@
 		12D44135ABA14A6FD2A2A1A5 /* MessageItemsConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4443F445FC0E865AFAF0A /* MessageItemsConverter.m */; };
 		12D441E610E1B83E5A1E3F5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D44EBC85FC15DBC34C87A1 /* Assets.xcassets */; };
 		12D4430CE4F81C94DA53178F /* BaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44A22872532F7EB1F4EFC /* BaseMessageCell.m */; };
-		12D4446D0F1A87A71327BD77 /* ContentMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44744B054972386AF0BEB /* ContentMessageCell.m */; };
+		12D4446D0F1A87A71327BD77 /* ContentIncomingMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44744B054972386AF0BEB /* ContentIncomingMessageCell.m */; };
 		12D44554A0288E5E6043E81C /* EventMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D44245E43C04C004E4D0B0 /* EventMessageCell.m */; };
 		12D445F06BE463B6391E9A0C /* activities_reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12D442A96E85D07E5AC75440 /* activities_reply@2x.png */; };
 		12D446B05DB9499131C0F816 /* SPLMDateTimeFormatterHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D443CF1DFA02B071CB1C42 /* SPLMDateTimeFormatterHelper.m */; };
@@ -63,7 +63,7 @@
 		12D444F4D5C13F00748C7D9B /* BaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMessageCell.h; sourceTree = "<group>"; };
 		12D4457AE386571785DDE5D1 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
 		12D4463CE63EFB625234BE76 /* GRVBanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVBanModel.h; sourceTree = "<group>"; };
-		12D44744B054972386AF0BEB /* ContentMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentMessageCell.m; sourceTree = "<group>"; };
+		12D44744B054972386AF0BEB /* ContentIncomingMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentIncomingMessageCell.m; sourceTree = "<group>"; };
 		12D4475AEEA3A81843D97BCB /* ContentMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentMessageItem.m; sourceTree = "<group>"; };
 		12D447A3EEB6CF89AC7BB910 /* BaseMessageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMessageItem.m; sourceTree = "<group>"; };
 		12D447C766322B136235134E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		12D44A239DA3EBFAEE0C8E0E /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		12D44A59362A5A387C7EBEFE /* EventMessageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventMessageItem.h; sourceTree = "<group>"; };
 		12D44A8708A51A14EB4C4A37 /* GRVUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRVUserModel.m; sourceTree = "<group>"; };
-		12D44B5B6B2B318D2CD3831B /* ContentMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentMessageCell.h; sourceTree = "<group>"; };
+		12D44B5B6B2B318D2CD3831B /* ContentIncomingMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentIncomingMessageCell.h; sourceTree = "<group>"; };
 		12D44BC4956D983D704069A2 /* GRVUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVUserModel.h; sourceTree = "<group>"; };
 		12D44C06E9DF177EBFCEF9C3 /* GRVObjectBuildManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRVObjectBuildManager.h; sourceTree = "<group>"; };
 		12D44C31241CAAEE5C1E4354 /* NSString+Grouvi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Grouvi.m"; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 		12D44DF163C234199E8D5125 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				12D44B5B6B2B318D2CD3831B /* ContentMessageCell.h */,
-				12D44744B054972386AF0BEB /* ContentMessageCell.m */,
+				12D44B5B6B2B318D2CD3831B /* ContentIncomingMessageCell.h */,
+				12D44744B054972386AF0BEB /* ContentIncomingMessageCell.m */,
 				12D4475AEEA3A81843D97BCB /* ContentMessageItem.m */,
 				12D448440C72CC5F0AB398CA /* ContentMessageItem.h */,
 				12D44A22872532F7EB1F4EFC /* BaseMessageCell.m */,
@@ -408,7 +408,7 @@
 			files = (
 				5090FC021C09AFDC0040E895 /* AppDelegate.m in Sources */,
 				5090FBFF1C09AFDC0040E895 /* main.m in Sources */,
-				12D4446D0F1A87A71327BD77 /* ContentMessageCell.m in Sources */,
+				12D4446D0F1A87A71327BD77 /* ContentIncomingMessageCell.m in Sources */,
 				12D4497783D32AD11BBFF4D1 /* ContentMessageItem.m in Sources */,
 				12D44A51DC3FF08FB423B1EE /* ViewController.m in Sources */,
 				12D4430CE4F81C94DA53178F /* BaseMessageCell.m in Sources */,

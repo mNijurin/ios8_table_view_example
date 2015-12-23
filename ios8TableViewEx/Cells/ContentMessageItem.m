@@ -5,7 +5,7 @@
 
 #import "MTLModel.h"
 #import "ContentMessageItem.h"
-#import "ContentMessageCell.h"
+#import "ContentIncomingMessageCell.h"
 #import "KOChatEntryElement.h"
 #import "SPLMMessage.h"
 
@@ -16,8 +16,8 @@
     return [NSString stringWithFormat:@"cell%u", self.imagesCount];
 }
 
-- (ContentMessageCell *)createCellWithContainerWidth:(CGFloat)containerWidth {
-    return [[ContentMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.reuseIdentifier containerWidth:containerWidth imagesCount:(NSUInteger) self.imagesCount];
+- (ContentIncomingMessageCell *)createCellWithContainerWidth:(CGFloat)containerWidth {
+    return [[ContentIncomingMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.reuseIdentifier containerWidth:containerWidth imagesCount:(NSUInteger) self.imagesCount];
 }
 
 - (NSMutableString *)messageText {
