@@ -8,6 +8,7 @@
 
 @class SPLMMessage;
 @class BaseMessageCell;
+@class BaseMessageItem;
 
 @interface BaseMessageItem : NSObject
 

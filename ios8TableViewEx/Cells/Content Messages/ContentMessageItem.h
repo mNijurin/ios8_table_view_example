@@ -6,7 +6,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseMessageItem.h"
 
-@class ContentIncomingMessageCell;
 @class SPLMMessage;
 
 @interface ContentMessageItem : BaseMessageItem

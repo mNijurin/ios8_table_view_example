@@ -8,10 +8,11 @@
 #import "ReplyViewInCell.h"
 #import "View+MASAdditions.h"
 #import "UIColor+EDHexColor.h"
-#import "ContentMessageItem.h"
 #import "SPLMMessage.h"
 #import "KOChatEntryElement.h"
 #import "UIImageView+WebCache.h"
+
+#define originalImageSize 30
 
 @implementation ReplyViewInCell
 
@@ -44,7 +45,7 @@
     }];
     [self.originalImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
-        make.width.height.mas_equalTo(originnalImageSize);
+        make.width.height.mas_equalTo(originalImageSize);
         make.leading.equalTo(self.leftLineView.mas_trailing).offset(8);
         make.centerY.equalTo(self.leftLineView);
     }];
@@ -101,7 +102,7 @@
         @weakify(self);
         [self.originalImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             @strongify(self);
-            make.width.mas_equalTo(originnalImageSize);
+            make.width.mas_equalTo(originalImageSize);
             make.leading.equalTo(self.leftLineView.mas_trailing).offset(8);
         }];
     }

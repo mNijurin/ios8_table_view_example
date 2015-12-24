@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-static const int originnalImageSize = 30;
-@class ContentMessageItem;
+#import "ContentMessageItem.h"
 
 @interface ReplyViewInCell : UIView
 

@@ -54,9 +54,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"height for row: %i", indexPath.row);
     BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
-    if (self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]]) {
+    if (self.heightsCache[[NSString stringWithFormat:@"%u", currentItem.hash]]) {
 //        NSLog(@"height from cache for row: %i", indexPath.row);
-        return [self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]] floatValue];
+        return [self.heightsCache[[NSString stringWithFormat:@"%u", currentItem.hash]] floatValue];
     } else {
 //        NSLog(@"height calc for row: %i", indexPath.row);
         BaseMessageCell *currentCell = self.cellsForSizing[currentItem.reuseIdentifier];
@@ -67,7 +67,7 @@
         }
         [currentCell fillWithItem:currentItem];
         CGFloat height = [currentCell heightForWidth:[UIScreen mainScreen].bounds.size.width];
-        self.heightsCache[[NSString stringWithFormat:@"%i", currentItem.hash]] = @(height);
+        self.heightsCache[[NSString stringWithFormat:@"%u", currentItem.hash]] = @(height);
         return height;
     }
 }
