@@ -15,7 +15,7 @@
 //possible values: in_cell_images_%@ , %@ from 0 to 4
 
 - (NSString *)reuseIdentifier {
-    NSNumber *currentUserId = @13;
+    NSNumber *currentUserId = @175;
     if ([self.message.userId isEqualToNumber:currentUserId]) {
         return [NSString stringWithFormat:@"out_cell_images_%@", @(self.imagesCount)];
     } else {
@@ -24,7 +24,7 @@
 }
 
 - (BaseContentMessageCell *)createCellWithContainerWidth:(CGFloat)containerWidth {
-    NSNumber *currentUserId = @13;
+    NSNumber *currentUserId = @175;
     if ([self.message.userId isEqualToNumber:currentUserId]) {
         return [[ContentOutgoingMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.reuseIdentifier containerWidth:containerWidth imagesCount:(NSUInteger) self.imagesCount];
     } else {

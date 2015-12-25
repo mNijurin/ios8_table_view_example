@@ -30,6 +30,28 @@
 //
 //    ];
 
+    NSString *pathForResource = [[NSBundle mainBundle] pathForResource:@"grouvi_json_sample"
+                                                                ofType:@"txt"];
+    
+    NSString *jsonString = [NSString stringWithContentsOfFile:pathForResource
+                                                 usedEncoding:nil
+                                                        error:nil];
+    
+    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    if (!data) {
+        return nil;
+    }
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:&error];
+    
+    NSArray *allNeededMessage = [[NSArray alloc] initWithArray:[[GRVObjectBuildManager new] translateCollectionFromJSON:jsonArray
+                                                                                                          withClassName:[SPLMMessage class]]];
+    
+
+        
     NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
                     [self messageWithCreateEvent],
                     [self messageWithTwoMediasAndText],
@@ -69,7 +91,13 @@
     NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
                                                          options:NSJSONReadingMutableContainers
                                                            error:&jsonError];
-    return [[GRVObjectBuildManager new] translateCollectionFromJSON:json withClassName:[SPLMMessage class]];
+    NSArray *anotherParsedMessages = [[GRVObjectBuildManager new] translateCollectionFromJSON:json withClassName:[SPLMMessage class]];
+    
+    NSMutableArray *some = [NSMutableArray new];
+    [some addObjectsFromArray:allNeededMessage];
+    [some addObjectsFromArray:anotherParsedMessages];
+
+    return some;
 }
 
 - (NSString *)messageWithCreateEvent {
@@ -1559,7 +1587,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"Maksim Nizhurin\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
@@ -1871,7 +1899,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"m n\","
             "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
             "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
@@ -1914,7 +1942,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"Maksim Nizhurin\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
@@ -1970,7 +1998,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"m n\","
             "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
             "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
@@ -2020,7 +2048,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"Maksim Nizhurin\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","
@@ -2076,7 +2104,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"m n\","
             "\"avatar\":\"http://cdn.grouvi.org/uploads/1ef63d32-0d04-4618-a776-d1404ee322bf/image.png\","
             "\"avatar_thumb\":\"http://cdn.grouvi.org/uploads/3eff3e5e-b31d-4a6f-b3cb-52855bbf2406/image.png\","
@@ -2112,7 +2140,7 @@
             "\"type\":\"UserMessage\","
             "\"channel_id\":5538,"
             "\"user\":{"
-            "\"id\":13,"
+            "\"id\":175,"
             "\"username\":\"Maksim Nizhurin\","
             "\"avatar\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/575135_102714863201165_1435716205_n.jpg?oh=87546ed3dbfc3da6d2bced9a36bbf15f\\u0026oe=568ADD10\\u0026__gda__=1456562693_2cfd04dac3e82f026b6cf196189c640f\","
             "\"avatar_thumb\":\"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/v/t1.0-1/c97.25.307.307/s100x100/575135_102714863201165_1435716205_n.jpg?oh=2d3ac5cac1d3697bad0301d4e2558486\\u0026oe=56CFC4A9\\u0026__gda__=1452015930_149c10d8e02813bac1e4d6bed1a13a09\","

@@ -41,6 +41,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"cell for row: %i", indexPath.row);
     BaseMessageItem *currentItem = self.items[(NSUInteger) indexPath.row];
+    
+    //NSLog(@"currentItem.message.userId = %@",currentItem.message.userId);
+    //NSLog(@"currentItem.message.userName = %@",currentItem.message.userName);
+    
     BaseMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:currentItem.reuseIdentifier];
     if (!cell) {
         cell = [currentItem createCellWithContainerWidth:MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
