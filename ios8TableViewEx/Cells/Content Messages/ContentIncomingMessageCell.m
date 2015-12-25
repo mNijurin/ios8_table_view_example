@@ -16,6 +16,8 @@
 #import "ReplyViewInCell.h"
 
 #define messageContentViewLeftMargin 45
+#define replyViewTopMargin 5
+#define replyViewReducedHeight 3
 
 @interface ContentIncomingMessageCell ()
 
@@ -90,13 +92,17 @@
     [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.leading.equalTo(self.messageContentView).offset(8);
-        make.top.trailing.equalTo(self.messageContentView);
+        make.top.equalTo(self.messageContentView);
+        make.trailing.equalTo(self.messageContentView).offset(-8);
         make.height.mas_equalTo(24);
     }];
+    [self.userNameLabel setContentCompressionResistancePriority:1001 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.userNameLabel setContentHuggingPriority:11 forAxis:UILayoutConstraintAxisHorizontal];
     [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         @strongify(self);
         make.leading.equalTo(self.topBar);
         make.bottom.equalTo(self.topBar);
+        make.trailing.equalTo(self.topBar);
     }];
 
     [self.replyView mas_makeConstraints:^(MASConstraintMaker *make) {

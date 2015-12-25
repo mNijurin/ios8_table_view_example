@@ -63,7 +63,7 @@
     [super setupConstraints];
     @weakify(self);
     [self.megaTextLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.megaTextLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.megaTextLabel setContentHuggingPriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
 
     if (self.imagesCount == 0) {
         [self.megaTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {

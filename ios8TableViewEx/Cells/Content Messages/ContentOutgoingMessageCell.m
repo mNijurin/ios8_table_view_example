@@ -8,6 +8,10 @@
 #import <Masonry/View+MASAdditions.h>
 #import "ContentOutgoingMessageCell.h"
 #import "ReplyViewInCell.h"
+
+#define replyViewTopMargin 9
+#define replyViewReducedHeight 7
+
 @interface ContentOutgoingMessageCell ()
 
 @property (nonatomic, strong) UIImageView *statusImageView;

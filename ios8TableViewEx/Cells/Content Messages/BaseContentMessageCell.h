@@ -12,9 +12,7 @@
 
 #define replyViewLeftMargin 10
 #define replyViewRightMargin 11
-#define replyViewTopMargin 5
 #define replyViewExpandedHeight 39
-#define replyViewReducedHeight 3
 
 #define leftImageViewLeftMargin 8
 #define topImageViewTopMargin 4
