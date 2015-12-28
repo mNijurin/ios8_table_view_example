@@ -36,25 +36,27 @@
         make.bottom.equalTo(self.contentView).offset(-5);
     }];
     [self.eventLabel setContentCompressionResistancePriority:1000 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.eventLabel setContentHuggingPriority:10 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.eventLabel setContentHuggingPriority:10000 forAxis:UILayoutConstraintAxisHorizontal];
     [self.eventLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.customContentView);
-        make.top.bottom.equalTo(self.customContentView);
+        make.top.equalTo(self.customContentView).offset(5);
+        make.bottom.equalTo(self.customContentView).offset(-5);
         make.width.lessThanOrEqualTo(self.customContentView).offset(-20);
     }];
     [self.eventBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.eventLabel);
+        make.top.equalTo(self.eventLabel).offset(-5);
+        make.bottom.equalTo(self.eventLabel).offset(5);
         make.leading.equalTo(self.eventLabel).offset(-5);
         make.trailing.equalTo(self.eventLabel).offset(5);
     }];
 }
 
 - (void)fillWithItem:(BaseMessageItem *)item {
+    self.eventLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 20;
     self.eventLabel.text = item.message.event.eventMessage;
 }
 
 - (CGFloat)heightForWidth:(CGFloat)width {
-    self.eventLabel.preferredMaxLayoutWidth = width - 20;
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }
@@ -65,7 +67,9 @@
 - (UILabel *)eventLabel {
     if (!_eventLabel) {
         _eventLabel = [UILabel new];
+        _eventLabel.numberOfLines = 0;
         _eventLabel.font = [UIFont systemFontOfSize:13];
+        _eventLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _eventLabel;
 }

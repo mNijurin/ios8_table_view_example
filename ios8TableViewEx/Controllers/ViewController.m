@@ -79,6 +79,11 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     self.heightsCache = [NSMutableDictionary new];
+    [coordinator animateAlongsideTransition:^(id <UIViewControllerTransitionCoordinatorContext> context) {
+        [self.tableView reloadData];
+    } completion:^(id <UIViewControllerTransitionCoordinatorContext> context) {
+
+    }];
 }
 
 @end

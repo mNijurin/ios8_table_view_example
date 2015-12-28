@@ -16,11 +16,14 @@
 
 - (NSString *)reuseIdentifier {
     NSNumber *currentUserId = @175;
-    if ([self.message.userId isEqualToNumber:currentUserId]) {
-        return [NSString stringWithFormat:@"out_cell_images_%@", @(self.imagesCount)];
-    } else {
-        return [NSString stringWithFormat:@"in_cell_images_%@", @(self.imagesCount)];
+    if (!super.reuseIdentifier) {
+        if ([self.message.userId isEqualToNumber:currentUserId]) {
+            super.reuseIdentifier = [NSString stringWithFormat:@"out_cell_images_%@", @(self.imagesCount)];
+        } else {
+            super.reuseIdentifier = [NSString stringWithFormat:@"in_cell_images_%@", @(self.imagesCount)];
+        }
     }
+    return super.reuseIdentifier;
 }
 
 - (BaseContentMessageCell *)createCellWithContainerWidth:(CGFloat)containerWidth {

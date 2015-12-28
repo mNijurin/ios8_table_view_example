@@ -10,10 +10,6 @@
 
 @implementation BaseMessageItem
 
-- (NSString *)reuseIdentifier {
-    @throw @"reuseIdentifier must be overridden";
-}
-
 - (BaseMessageCell *)createCellWithContainerWidth:(CGFloat)containerWidth {
     @throw @"createCellWithContainerWidth must be overridden";
 }

@@ -89,6 +89,13 @@
 }
 
 - (void)fillWithItem:(BaseMessageItem *)item {
+    CGFloat horizontalLabelMargins = textLabelLeftMargin + textLabelRightMargin + 7;
+    if (self.imagesCount == 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width * percentTakenByContent - horizontalLabelMargins;
+    } else if (self.imagesCount > 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = self.containerMinWidth * percentTakenByContent - horizontalLabelMargins;
+    }
+
     [super fillWithItem:item];
     ContentMessageItem *currentItem = (ContentMessageItem *) item;
 
@@ -112,12 +119,6 @@
 }
 
 - (CGFloat)heightForWidth:(CGFloat)width {
-    CGFloat horizontalLabelMargins = textLabelLeftMargin + textLabelRightMargin + 7;
-    if (self.imagesCount == 0) {
-        self.megaTextLabel.preferredMaxLayoutWidth = width * percentTakenByContent - horizontalLabelMargins;
-    } else if (self.imagesCount > 0) {
-        self.megaTextLabel.preferredMaxLayoutWidth = self.containerMinWidth * percentTakenByContent - horizontalLabelMargins;
-    }
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }

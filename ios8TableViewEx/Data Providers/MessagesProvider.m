@@ -32,70 +32,70 @@
 
     NSString *pathForResource = [[NSBundle mainBundle] pathForResource:@"grouvi_json_sample"
                                                                 ofType:@"txt"];
-    
+
     NSString *jsonString = [NSString stringWithContentsOfFile:pathForResource
                                                  usedEncoding:nil
                                                         error:nil];
-    
+
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error;
     if (!data) {
         return nil;
     }
-    
+
     NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data
                                                          options:0
                                                            error:&error];
-    
+
     NSArray *allNeededMessage = [[NSArray alloc] initWithArray:[[GRVObjectBuildManager new] translateCollectionFromJSON:jsonArray
                                                                                                           withClassName:[SPLMMessage class]]];
     
 
         
-    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
-                    [self messageWithCreateEvent],
-                    [self messageWithTwoMediasAndText],
-                    [self messageWithJoinEvent],
-                    [self messageWithTwoMediasTextAndLike],
-                    [self messageWithTextAndLike],
-                    [self messageWithReplyOnTwoMediasWithText],
-                    [self messageWithOneMedia],
-                    [self messageWithReplyOnLongText],
-                    [self messageWithText],
-                    [self messageWithReplyOnTwoMedias],
-                    [self messageWithTwoMedias],
-                    [self messageWithLongText],
-                    [self messageWithThreeMedias],
-                    [self messageWithFourMedias],
-                    [self messageWithFourMediasAndText],
-                    [self messageWithReplyOnTwoMediasWithTwoMedias],
-                    [self messageWithReplyOnTwoMediasWithOneMedia],
-                    [self outMessageWithTwoMediasAndText],
-                    [self outMessageWithTwoMediasTextAndLike],
-                    [self outMessageWithTextAndLike],
-                    [self outMessageWithReplyOnTwoMediasWithText],
-                    [self outMessageWithOneMedia],
-                    [self outMessageWithReplyOnLongText],
-                    [self outMessageWithText],
-                    [self outMessageWithReplyOnTwoMedias],
-                    [self outMessageWithTwoMedias],
-                    [self outMessageWithLongText],
-                    [self outMessageWithThreeMedias],
-                    [self outMessageWithFourMedias],
-                    [self outMessageWithFourMediasAndText],
-                    [self outMessageWithReplyOnTwoMediasWithTwoMedias],
-                    [self outMessageWithReplyOnTwoMediasWithOneMedia]
-    ];
+//    NSString *jsonMessages = [NSString stringWithFormat:@"[%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@]",
+//                    [self messageWithCreateEvent],
+//                    [self messageWithTwoMediasAndText],
+//                    [self messageWithJoinEvent],
+//                    [self messageWithTwoMediasTextAndLike],
+//                    [self messageWithTextAndLike],
+//                    [self messageWithReplyOnTwoMediasWithText],
+//                    [self messageWithOneMedia],
+//                    [self messageWithReplyOnLongText],
+//                    [self messageWithText],
+//                    [self messageWithReplyOnTwoMedias],
+//                    [self messageWithTwoMedias],
+//                    [self messageWithLongText],
+//                    [self messageWithThreeMedias],
+//                    [self messageWithFourMedias],
+//                    [self messageWithFourMediasAndText],
+//                    [self messageWithReplyOnTwoMediasWithTwoMedias],
+//                    [self messageWithReplyOnTwoMediasWithOneMedia],
+//                    [self outMessageWithTwoMediasAndText],
+//                    [self outMessageWithTwoMediasTextAndLike],
+//                    [self outMessageWithTextAndLike],
+//                    [self outMessageWithReplyOnTwoMediasWithText],
+//                    [self outMessageWithOneMedia],
+//                    [self outMessageWithReplyOnLongText],
+//                    [self outMessageWithText],
+//                    [self outMessageWithReplyOnTwoMedias],
+//                    [self outMessageWithTwoMedias],
+//                    [self outMessageWithLongText],
+//                    [self outMessageWithThreeMedias],
+//                    [self outMessageWithFourMedias],
+//                    [self outMessageWithFourMediasAndText],
+//                    [self outMessageWithReplyOnTwoMediasWithTwoMedias],
+//                    [self outMessageWithReplyOnTwoMediasWithOneMedia]
+//    ];
 
-    NSData *objectData = [jsonMessages dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                         options:NSJSONReadingMutableContainers
-                                                           error:&jsonError];
-    NSArray *anotherParsedMessages = [[GRVObjectBuildManager new] translateCollectionFromJSON:json withClassName:[SPLMMessage class]];
-    
+//    NSData *objectData = [jsonMessages dataUsingEncoding:NSUTF8StringEncoding];
+//    NSArray *json = [NSJSONSerialization JSONObjectWithData:objectData
+//                                                         options:NSJSONReadingMutableContainers
+//                                                           error:&jsonError];
+//    NSArray *anotherParsedMessages = [[GRVObjectBuildManager new] translateCollectionFromJSON:json withClassName:[SPLMMessage class]];
+//
     NSMutableArray *some = [NSMutableArray new];
     [some addObjectsFromArray:allNeededMessage];
-    [some addObjectsFromArray:anotherParsedMessages];
+//    [some addObjectsFromArray:anotherParsedMessages];
 
     return some;
 }

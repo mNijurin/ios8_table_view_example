@@ -123,6 +123,13 @@
 #pragma mark - life cycle
 
 - (void)fillWithItem:(BaseMessageItem *)item {
+    CGFloat horizontalLabelMargins = textLabelLeftMargin + textLabelRightMargin;
+    if (self.imagesCount == 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width * percentTakenByContent - messageContentViewLeftMargin - horizontalLabelMargins;
+    } else if (self.imagesCount > 0) {
+        self.megaTextLabel.preferredMaxLayoutWidth = self.containerMinWidth * percentTakenByContent - messageContentViewLeftMargin - horizontalLabelMargins;
+    }
+
     [super fillWithItem:item];
     ContentMessageItem *currentItem = (ContentMessageItem *) item;
 
@@ -152,12 +159,6 @@
 }
 
 - (CGFloat)heightForWidth:(CGFloat)width {
-    CGFloat horizontalLabelMargins = textLabelLeftMargin + textLabelRightMargin;
-    if (self.imagesCount == 0) {
-        self.megaTextLabel.preferredMaxLayoutWidth = width * percentTakenByContent - messageContentViewLeftMargin - horizontalLabelMargins;
-    } else if (self.imagesCount > 0) {
-        self.megaTextLabel.preferredMaxLayoutWidth = self.containerMinWidth * percentTakenByContent - messageContentViewLeftMargin - horizontalLabelMargins;
-    }
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }
