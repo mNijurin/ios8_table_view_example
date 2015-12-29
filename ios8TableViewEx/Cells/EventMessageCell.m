@@ -56,7 +56,7 @@
     self.eventLabel.text = item.message.event.eventMessage;
 }
 
-- (CGFloat)heightForWidth:(CGFloat)width {
+- (CGFloat)calculateHeight {
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }

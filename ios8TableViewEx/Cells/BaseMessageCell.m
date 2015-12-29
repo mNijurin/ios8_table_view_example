@@ -39,7 +39,7 @@
 }
 
 
-- (CGFloat)heightForWidth:(CGFloat)width {
+- (CGFloat)calculateHeight {
     @throw @"heightForWidth must be overridden";
 }
 

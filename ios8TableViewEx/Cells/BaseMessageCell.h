@@ -21,6 +21,6 @@
 
 - (void)fillWithItem:(BaseMessageItem *)item;
 
-- (CGFloat)heightForWidth:(CGFloat)width;
+- (CGFloat)calculateHeight;
 
 @end

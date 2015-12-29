@@ -118,7 +118,7 @@
     }
 }
 
-- (CGFloat)heightForWidth:(CGFloat)width {
+- (CGFloat)calculateHeight {
     CGSize size = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
 }

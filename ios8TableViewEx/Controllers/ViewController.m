@@ -70,7 +70,7 @@
             self.cellsForSizing[currentItem.reuseIdentifier] = currentCell;
         }
         [currentCell fillWithItem:currentItem];
-        CGFloat height = [currentCell heightForWidth:[UIScreen mainScreen].bounds.size.width];
+        CGFloat height = [currentCell calculateHeight];
         self.heightsCache[[NSString stringWithFormat:@"%u", currentItem.hash]] = @(height);
         return height;
     }
